@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!--
+% !TEX TS-program = PreTeXt-HTML
+-->
+<section xml:id="week-6" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Week 6</title>
+	<subsection>
+		<title>Self-test questions for lecture 11</title>
+			<exercise>
+				<title>Algebra of (finite) function limits</title>
+				<task>
+					<statement>
+					State and prove how (finite) function limits respect (non-strict) inequalities, addition, multiplication, division, composition, absolute value and min/max.				</statement>
+					<solution>
+					<proposition xml:id="prop-alg-cts">
+					<title>Algebra of (finite) function limits</title>
+					<p>
+					Let <m>f_1, f_2 : D \to \R</m> with <m>D \subset \R</m>. Let <m>x_0 \in [-\infty, \infty]</m> and <m>y_1,y_2\in \R</m>. Suppose that for <m>i=1,2</m> we have
+ 						<men xml:id="eq-finite-fn-lim">
+ 						f_i(x) \to y_i \quad \text{as}\quad x \to x_0\quad\text{through}\quad D
+ 						</men>.
+ 					Then
+  					</p>
+ 					<ol>
+					<li xml:id="prop-alg-cts-ineq">
+					<title>Inequality rule</title>
+					If <m>f_1(x) \leq f_2(x)</m> for all <m>x \in D</m>, then <m>y_1\leq y_2</m>.
+					</li>					
+					<li>
+					<title>Addition rule</title>
+					<me>
+					f_1(x)+f_2(x) \to y_1+y_2 \quad \text{as}\quad x \to x_0\quad\text{through}\quad D
+					</me>
+					</li>					
+					<li>
+					<title>Multiplication rule</title>
+					<me>
+					f_1(x)f_2(x) \to y_1y_2 \quad \text{as}\quad x \to x_0\quad\text{through}\quad D
+					</me>
+					</li>
+					<li>
+					<title>Division rule</title>
+					If <m>y_2\neq 0</m> then there exists a neighbourhood<fn>If <m>x_0\in\R</m> then <m>N</m> is a neighbourhood of <m>x_0</m> if <m>N=[x_0-\eps, x_0+\eps]</m> for some <m>\eps \gt 0</m>. If <m>x_0 = +\infty</m> then <m>N</m> is a neighbourhood if <m>N=[M, \infty)</m> for some <m>M\in \R</m>. If <m>x_0 = -\infty</m> then <m>N</m> is a neighbourhood if <m>N=(-\infty, M]</m> for some <m>M\in \R</m>.</fn> <m>N</m> of <m>x_0</m> such that
+					<me>
+					\frac{f_1(x)}{f_2(x)} \to \frac{y_1}{y_2} \quad \text{as}\quad x \to x_0\quad\text{through}\quad D\cap N
+					</me>.
+					</li>
+					<li>
+					<title>Composition rule</title>
+					If <m>g :f_1(D)\to \R</m> satisfies
+					<me>
+					g(y) \to z \quad \text{as}\quad y \to y_1 \quad\text{through}\quad f_1(D)
+					</me>,
+					then
+					<me>
+					g(f_1(x)) \to z \quad \text{as}\quad x \to x_0\quad\text{through}\quad D
+					</me>.
+					</li>
+					<li>
+					<title>Absolute value rule</title>
+					If <m>y_1\in \R</m> then
+					<me>
+					|f_1(x)| \to |y_1| \quad \text{as}\quad x \to x_0\quad\text{through}\quad D
+					</me>
+					</li>
+					<li>
+					<title>Min/max rule</title>
+					If <m>y_1,y_2\in \R</m> then
+					<me>
+					\min\set{f_1(x),f_2(x)} \to \min\set{y_1,y_2} \quad \text{as}\quad x \to x_0\quad\text{through}\quad D
+					</me>,
+					<me>
+					\max\set{f_1(x),f_2(x)} \to \max\set{y_1,y_2} \quad \text{as}\quad x \to x_0\quad\text{through}\quad D
+					</me>.
+					</li>
+					</ol>
+					<proof>
+					<p>
+We first prove the result for the division rule, the arguments for the inequality rule, addition rule and the multiplication rule being similar (and easier, hence left to the reader). 
+					</p>
+					<p>
+					Since inequalities spread around a limit (<xref ref="cor-non-zero-cts"/>), there exists a neighbourhood <m>N</m> of <m>x_0</m> such that for all <m>x\in D\cap N</m> we have <m>f_2(x)\neq 0</m>. Let <m>(a_n)_n</m> be a sequence in <m>D \cap N</m> with <m>a_n\to x_0</m>. By definition of function limits (<xref ref="def-fn-lim"/>), we are required to show that <m>f_1(a_n)/f_2(a_n)\to y_1/y_2</m> as <m>n\to\infty</m>. By our assumption <xref ref="eq-finite-fn-lim"/> and the definition of function limit (<xref ref="def-fn-lim"/>), we have <m>f_i(a_n)\to y_i</m> for both <m>i=1,2</m>. Hence combining the multiplication rule (<xref ref="prop-mult-rule"/>) and reciprocal rule (<xref ref="prop-recip-rule"/>) for sequential limits, we obtain
+					<me>
+					\lim_{n\to \infty}\frac{f_1(a_n)}{f_2(a_n)} =  \lim_{n\to \infty}f_1(a_n)\lim_{n\to \infty}\frac{1}{f_2(a_n)}= y_1\frac{1}{y_2}					</me>,
+as required.
+					</p>
+					<p>
+					Next we prove the composition rule. Let <m>(a_n)_n</m> be a sequence in <m>D</m> which tends to <m>x_0</m> through <m>D</m>. By definition of the function limit (<xref ref="def-fn-lim"/>), we are required to prove that <m>g( f_1(a_n))\to z</m> as <m>n\to\infty</m>. By our assumption <xref ref="eq-finite-fn-lim"/> and the definition of function limit (<xref ref="def-fn-lim"/>), we have <m>f_1(a_n)\to y_1</m>. Since <m>g</m> tends to <m>z</m> as <m>y</m> tends to <m>y_1</m> through <m>f_1(D)</m>, it follows that <m>g \brac{f_1(a_n)}\to z</m> as <m>n\to\infty</m>, as required.
+					</p>
+					<p>
+					The absolute value rule follows from the composition rule, taking <m>g</m> to be the absolute value function <m>g(y) := |y|</m>, which is continuous (<xref ref="eg-abs-cts"/>), hence <m>g(y)\to |y_1|</m> as <m>y\to y_1</m> through <m>f_1(D)</m>.
+					</p>
+					<p>
+					For the minimum rule, we first observe that the function <m>g(x) := \min\set{x,0}</m> is continuous on <m>\R</m>. To prove this one can establish the inequality <m>|g(x_1)-g(x_2)|\leq |x_1-x_2|</m> then (e.g.) take <m>\delta(\eps) = \eps</m> in the epsilon-delta characterisation of continuity. By the addition and multiplication rules, we have that 
+					<me>
+					f_1(x) - f_2(x) \to y_1-y_2 \quad \text{as} \quad x\to x_0\quad\text{through}\quad D.
+					</me>
+					Hence, using the composition rule with <m>g</m>, we see that
+					<me>
+					\min\set{f_1(x) - f_2(x),0} \to \min\set{y_1-y_2,0} \quad \text{as} \quad x\to x_0\quad\text{through}\quad D.
+					</me>
+					Using the identity
+					<me>
+					\min\set{a,b} = \min{a-b,0}+b
+					</me>,
+					together with the addition/multiplication rules, we deduce the minimum rule. The maximum rule follows from a similar argument.
+					</p>
+</proof>
+</proposition>	
+<corollary>
+<statement>
+Let <m>f,g : D\to \R</m> and <m>h:f(D) \to \R</m> all be continuous. Then <m>f+g, fg, h\circ f, |f|, \min\set{f,g}, \max\set{f,g}</m> are all continuous.
+</statement>
+</corollary>
+<example xml:id="prop-poly-cts">
+<title>Polynomials are continuous</title>
+Given <m>c_0, c_1, \dots, c_n \in \R</m> define
+<me>
+f(x) = c_0 + c_1 x + \dots + c_n x^n
+</me>.
+Then the polynomial <m>f</m> is continuous on <m>\R</m>.
+<proof>
+ The identity function <m>x \mapsto x</m> is continuous, since denoting this function by <m>f</m>, we have <m>a_n \to x_0</m> implies <m>f(a_n) \to f(x_0)</m>.
+ By the multiplication rule (<xref ref="prop-mult-rule"/>) it follows that <m>x^2</m> is continuous.
+ Iterating this argument, we see that <m>x^3 = x\cdot x^2</m> is continuous.
+ It follows from induction that <m>x^n</m> is continuous for any <m>n \in \N</m>.
+ Since constant functions are continuous (<xref ref="eg-const-cts"/>), it again follows from the multiplication rule that <m>c_n x^n</m> is continuous for any <m>c_n \in \R</m>.
+ By the addition rule (<xref ref="prop-add-rule"/>), the sum
+<me>
+c_0 + c_1x+ \dots + c_n x^n
+</me>
+is continuous.
+ Hence polynomials are continuous.
+</proof>
+</example>
+					</solution>
+				</task>
+			</exercise>
+<exercise>
+				<title>Uniform continuity</title>
+				<task xml:id="ex-unif-cts">
+					<statement>Define what it means for a real-valued function on a real domain to be <em>uniformly</em> continuous.
+				</statement>
+					<solution>
+					<definition xml:id="def-unif-cts">
+					<title>Uniformly continuous</title>
+ Let <m>f : D \to \R</m> be a real valued function on a real domain <m>D \subset \R</m>.
+ We say that <m>f</m> is <em>uniformly continuous on <m>D</m></em> if 
+ <mdn>
+ <mrow number="no">
+(\forall \eps \gt 0)(\exists \delta = \delta(\eps) \gt 0)\amp (\forall x_1,x_2 \in D)
+</mrow>
+<mrow xml:id="eq-unif-cts">
+\amp\bigsqbrac{\ |x_1-x_2| \leq \delta \implies |f(x_1)-f(x_2)| \leq \eps\ }.
+</mrow>
+</mdn>
+</definition>					</solution>
+				</task>
+				<task>
+					<statement>
+					Justify why uniform continuity implies continuity, but not vice versa.
+					</statement>
+					<solution>
+					<proposition xml:id="prop-unif-implies-cts">
+					<title>Uniform continuity implies continuity</title>
+					<statement>
+					Let <m>D \subset \R</m> and <m>f:D\to\R</m>. If <m>f</m> is uniformly continuous on <m>D</m>, then it is also continuous on <m>D</m>.
+					</statement>
+					<proof>
+ By the definition of continuity (<xref ref="def-cts"/>) and the epsilon-delta characterisation of the limit (<xref ref="cor-eps-delta-cts"/>), it suffices to prove that 
+<md>
+<mrow>
+(\forall x_0 \in D)(\forall \eps \gt 0)(\exists \delta_1 = \delta_1(x_0,\eps) \gt 0)\amp (\forall x \in D)
+</mrow>
+<mrow>
+\amp \bigsqbrac{\ |x-x_0| \leq \delta_1 \implies |f(x)-f(x_0)| \leq \eps\ }.
+</mrow>
+</md>
+By the definition of uniform continuity <xref ref="def-unif-cts"/>, we know that
+<md>
+ <mrow>
+(\forall \eps \gt 0)(\exists \delta_2 = \delta_2(\eps) \gt 0)\amp (\forall x_1,x_2 \in D)
+</mrow>
+<mrow>
+\amp\bigsqbrac{\ |x_1-x_2| \leq \delta_2 \implies |f(x_1)-f(x_2)| \leq \eps\ }.
+</mrow>
+</md>
+Fixing <m>x_0\in D</m> and <m>\eps \gt 0</m>, set <m>\delta_1(x_0,\eps) := \delta_2(\eps)</m>. Then for <m>x\in D</m> with <m>|x-x_0|\leq \delta_1 = \delta_2</m>, we have <m>|f(x)-f(x_0)|\leq \eps</m>, as required.
+</proof>
+</proposition>
+<example xml:id="eg-square-not-unif-cts">
+<title>Continuity does not imply uniform continuity</title>
+<p>
+ Define <m>f : \R \to \R</m> at each <m>x \in \R</m> by <m>f(x) := x^2</m>.
+ Then <m>f</m> is a polynomial, so is continuous on <m>\R</m> by <xref ref="prop-poly-cts"/>.
+ By way of contradiction, suppose that <m>f</m> were uniformly continuous on <m>\R</m>. 
+ Taking <m>\eps := 1</m> in the definition of uniform continuity (<xref ref="def-unif-cts"/>),  there exists <m>\delta \gt 0</m> such that if <m>|x_1 - x_2| \leq \delta</m> then <m>|x_1^2 - x_2^2| \leq 1</m>.
+ Setting <m>x_2 := x_1 + \delta</m>, we deduce that for any <m>x_1 \gt 0</m> we have 
+<me>
+1 \geq |x_1^2 - x_2^2| = |x_1-x_2||x_1+x_2| = \delta (2x_1+\delta) \geq \delta x_1.
+</me>
+ Taking, say, <m>x_1 = 2/\delta</m> then yields a contradiction.
+ </p>
+ <p>
+ The domain of a function is important for uniform continuity: the function <m>f(x) = x^2</m> is not uniformly continuous on <m>\R</m>, yet one can show that it is uniformly continuous on any closed interval <m>[a,b]</m> (see <xref ref="thm-unif-cts"/>).
+ </p>
+</example>					</solution>
+				</task>
+				<task>
+					<statement>State how a continuous function on a closed interval is uniformly continuous (the proof is non-examinable).
+					</statement>
+					<solution>
+					<theorem xml:id="thm-unif-cts">
+<title>Continuous on closed interval implies uniformly continuous</title>
+<statement>
+ Let <m>f : [a,b] \to \R</m> be a real valued function on a <em>closed interval</em>  <m>[a,b] \subset \R</m>.
+ Suppose that <m>f</m> is continuous on <m>[a,b]</m>.
+ Then <m>f</m> is uniformly continuous on <m>[a,b]</m>.
+</statement>
+
+<proof>
+<title>Proof (non-examinable)</title>
+ By way of contradiction, suppose that <m>f</m> is not uniformly continuous on <m>[a,b]</m>.
+ Negating the definition of uniform continuity <xref ref="eq-unif-cts"/>, we deduce that
+<me xml:id="eq-unif-cts-not">
+(\exists \eps \gt 0)(\forall \delta  \gt 0)(\exists x,y \in [a,b])
+\bigsqbrac{\ |x-y| \leq \delta \quad \text{and} \quad |f(x)-f(y)| \gt \eps\ }.
+</me>
+ Taking <m>\delta := 1/n</m>, we have 
+<me>
+(\forall n  \in \N)(\exists x_n,y_n \in [a,b])
+\bigsqbrac{\ |x_n-y_n| \leq \trecip{n} \quad \text{and} \quad |f(x_n)-f(y_n)| \gt \eps\ }.
+</me>
+ By the Bolzano-Weierstrass theorem (<xref ref="cor-bolzano"/>) there exists <m>x_0\in \R</m> and  <m>k(1) \lt  k(2) \lt  \dots</m> such that <m>x_{k(n)} \to x_0</m> as <m>n \to \infty</m>. By the inequality rule for limits (<xref ref="prop-ineq-rule"/>) we see that <m>x_0 \in [a,b]</m>.
+  Applying the same argument to the sequence <m>(y_{k(n)})_n</m>, there exists <m>y_0\in [a,b]</m> and  <m>\ell_1 \lt  \ell_2 \lt  \dots</m> such that <m>y_{k(\ell_n)} \to y_0</m> as <m>n \to \infty</m>.
+ Since subsequences of convergent sequence tend to the same limit (<xref ref="prop-subseq-conv"/>), we also have <m>x_{k(\ell_n)} \to x_0</m> as <m>n \to \infty</m>.
+ Notice that
+<md>
+<mrow>
+|x_0 - y_0| \amp \leq |x_0-x_{k(\ell_n)}| + |x_{k(\ell_n)}- y_{k(\ell_n)}| + |y_{k(\ell_n)} -y_0|
+</mrow>
+<mrow>
+\amp \leq |x_0-x_{k(\ell_n)}| + \recip{k(\ell_n)} + |y_{k(\ell_n)} -y_0|
+</mrow>
+<mrow>
+\amp \to 0 \quad \text{as}\quad n \to \infty.
+</mrow>
+</md>
+ Therefore <m>x_0 = y_0</m>.
+ Yet continuity of <m>f</m>, continuity of the absolute value and the addition rule (<xref ref="prop-add-rule"/>) together give that
+<me>
+\eps \lt  |f(x_{k(\ell_n)}) - f(y_{k(\ell_n)})| \to |f(x_0)-f(y_0)| = 0.
+</me>
+ Since this is a contradiction, it follows that <m>f</m> must indeed be uniformly continuous.
+</proof>
+</theorem>					</solution>
+				</task>
+			</exercise>		
+	</subsection>
+	<subsection>
+		<title>Self-test questions for lecture 12</title>
+		<exercise>
+				<title>The intermediate value theorem</title>
+				<task>
+					<statement>
+					State and prove the intermediate value theorem.
+					</statement>
+					<solution>
+					<theorem xml:id="thm-IVT">
+<title>Intermediate value theorem</title>
+<statement>
+ Let <m>f : [a,b] \to \R</m> be a continuous function on a closed interval <m>[a,b] \subset \R</m>.
+ For any real number <m>y</m> between<fn>i.e. if <m>f(a) \leq f(b)</m> then <m>f(a) \leq y \leq f(b)</m>, whilst if <m>f(a) \gt f(b)</m> then <m>f(a) \geq y \geq f(b)</m>.</fn> <m>f(a)</m> and <m>f(b)</m>, there exists <m>x \in [a,b]</m> such that <m>f(x) = y</m>.
+</statement>
+<proof>
+<p>
+We prove the result assuming that <m>f(a) \leq y \leq f(b)</m>; if <m>f(a) \geq y \geq f(b)</m> then we reduce to the former case on considering <m> -f</m>.
+ Set
+<me>
+x := \sup\set{t \in [a,b] : f(t) \leq y}.
+</me>
+ The above supremum exists because the set is non-empty (it contains <m>a</m>) and is bounded above by <m>b</m>. In particular, <m>a \leq x \leq b</m>.
+ We claim that <m>f(x) = y</m>.
+ </p>
+ <p>
+If it is not the case that <m>f(x)\leq y</m>, then <m>f(x)\gt y</m>. It follows that the function <m>g(t):=f(t)-y</m> is continuous on <m>[a,b]</m> and has <m>g(x) \gt 0</m>. Since positivity spreads around a positive limit, there exists <m>\delta \gt 0</m> such that for all <m>t\in [a,b]\cap[x-\delta, x+\delta]</m> we have <m> f(t)-y = g(t) \gt 0</m>. Since decreasing a supremum gives a non-upper bound, there exists <m>t\gt x-\delta</m> with <m>f(t) \leq y</m>. But then <m>t \in [a,b]\cap[x-\delta, x+\delta]</m>, and so we obtain the contradiction that
+<me>
+y \geq f(t) \gt y
+</me>. 
+ </p>
+ <p>
+ It remains to show that <m>f(x) \geq y</m>. By way of contradiction, suppose that <m>f(x) \lt y</m>. It follows that the function <m>h(t):=y-f(t)</m> is continuous on <m>[a,b]</m> and has <m>h(x) \gt 0</m>.
+  Since positivity spreads around a positive limit, there exists <m>\delta \gt 0</m> such that for all <m>t\in [a,b]\cap[x-\delta, x+\delta]</m> we have <m> y- f(t) = h(t) \gt 0</m>. Notice that if <m>b\leq x+\delta</m>, then <m>b \in [a,b]\cap[x-\delta, x+\delta]</m> and hence <m>f(b)\lt y</m>, which is a contradiction. Thus <m>b\gt x-\delta</m>. In particular, <m>x+\delta \in [a,b]\cap[x-\delta, x+\delta]</m> and so <m>f(x+\delta) \lt y</m>. However the latter contradicts the fact that <m>x</m> is an upper bound for the set of <m>t\in [a,b]</m> satisfying <m>f(t)\leq y</m>. Thus <m>f(x)\geq y</m>, as required.
+</p>
+</proof>
+	</theorem>				</solution>
+				</task>
+				<task>
+					<statement>
+					Use the intermediate value theorem to state and prove the existence of positive <m>n</m>th roots.</statement>
+					<solution>
+					<corollary xml:id="cor-exist-roots">
+<title>Existence of roots</title>
+<statement>
+ Let <m>n \in \N</m>.
+ Let <m>a \in [0, \infty)</m>.
+ Then there exists a unique <m>x \in [0, \infty)</m> such that 
+<me>
+x^n = a.
+</me>
+</statement>
+<proof>
+ The function <m>x \mapsto x^n</m> is continuous on the closed interval <m>[0, 1+a]</m>, by <xref ref="prop-poly-cts"/>.
+ One can check that
+<me>
+0^n \leq a \leq (1+a)^n.
+</me>
+ Hence by the intermediate value theorem (<xref ref="thm-IVT"/>), there exists <m>x \in [0, 1+a]</m> such that <m>x^n = a</m>.
+ For uniqueness, suppose that <m>\tilde x \in [0,\infty)</m> also satisfies <m>\tilde x^n = a</m>.
+ Factorising, we have
+<me>
+(x-\tilde x)(x^{n-1} + x^{n-2}\tilde x + \dots + x \tilde x^{n-2} + \tilde x^{n-1}) = x^n - \tilde x^n = 0.
+</me>
+ If <m>x \neq \tilde x</m> then the factor <m>x^{n-1}  + \dots  + \tilde x^{n-1}</m> must be zero.
+ Since <m>x, \tilde x \geq 0</m>, the only way this can happen is if <m>x = \tilde x</m>.
+</proof>
+</corollary>
+<definition xml:id="def-root">
+<title><m>n</m>th root function</title>
+ Let <m>n \in \N</m>.
+  We define the function <m>\sqrt[n]{} : [0, \infty) \to [0, \infty)</m> by setting <m>\sqrt[n]{a}</m> to be the unique non-negative real number <m>x \in [0, \infty)</m> such that <m>x^n= a</m>.
+ The existence and uniqueness of <m>x</m> are guaranteed by <xref ref="cor-exist-roots"/>.
+</definition>
+					</solution>
+				</task>
+				</exercise>
+				<exercise>
+								<title>The extreme value theorem</title>
+
+				<task>
+					<statement>
+					State the extreme value theorem (the proof is non-examinable).
+					</statement>
+					<solution>
+					<theorem xml:id="thm-extreme">
+<title>Extreme value theorem</title>
+<statement>
+ Let <m>f : [a,b] \to \R</m> be a continuous function.
+ Then there exist <m>x_1,x_2 \in [a,b]</m> such that
+<me>
+f(x_1) = \inf_{[a,b]} f \quad \text{and} \quad f(x_2) = \sup_{[a,b]} f.
+</me>
+ In particular, a continuous function on a closed interval is bounded.
+ </statement>
+
+<proof>
+<title>Proof (non-examinable)</title>
+ We prove the result for the supremum, the argument for the infimum being similar.
+ Notice that the supremum <m>
+ \sup_{[a,b]} f
+</m>
+is either real or equal to <m>\infty</m>. We first discount the latter situation.
+ If <m>\sup_{[a,b]} f = \infty</m> then for any <m>n \in \N</m> there exist <m>x_n \in [a,b]</m> with <m>f(x_n) \gt n</m> (otherwise <m>n</m> is a finite upper bound for <m>f</m>).
+ By the Bolzano-Weierstrass theorem, there exists <m>k_1 \lt  k_2 \lt  \dots</m> such that the subsequence <m>x_{k_n}</m> tends to a real limit <m>x_0</m> for some <m>x_0 \in \R</m>.
+ By the inequality rule (<xref ref="prop-ineq-rule"/>) we have <m>x_0 \in [a,b]</m>.
+ By continuity (<xref ref="def-cts"/>) and the inequality rule (<xref ref="prop-ineq-rule"/>) we have
+<me>
+f(x_0) = \lim_{n \to \infty} f(x_{k_n}) \geq \lim_{n \to \infty} k_n = \infty.
+</me>
+ This is a contradiction, since <m>f(x_0)</m> is a real number.
+ It follows that the supremum is finite.
+ Since decreasing a supremum gives a non upper bound (<xref ref="prop-alt-sup"/>), for each <m>n \in \N</m> there exists <m>x_n \in [a,b]</m> such that 
+<me xml:id="eq-sup-sand">
+\brac{\sup_{[a,b]} f}-\recip n \lt  f(x_n) \leq \sup_{[a,b]} f.
+</me>
+ Since the set <m>[a,b]</m> is bounded, the Bolzano-Weierstrass theorem (<xref ref="cor-bolzano"/>) gives the existence of <m>k_1 \lt  k_2 \lt  k_3 \lt  \dots</m> such that the subsequence <m>x_{k_n}</m> converges to some <m>x_0 \in [a,b]</m>.
+ Since <m>f</m> is continuous at <m>x_0</m>, the sequential definition of continuity (<xref ref="def-cts"/>) gives that
+<me>
+f(x_0) = \lim_{n\to \infty} f(x_{k_n}).
+</me>
+ By the sandwich rule (<xref ref="prop-sandwich"/>), we deduce that
+<me>
+f(x_0) = \sup_{[a,b]} f.
+</me>
+</proof></theorem>
+					</solution>
+				</task>
+			</exercise>
+	</subsection>
+</section>

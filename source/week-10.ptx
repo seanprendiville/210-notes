@@ -1,0 +1,368 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!--
+% !TEX TS-program = PreTeXt-HTML
+-->
+<section xml:id="week-10" xmlns:xi="http://www.w3.org/2001/XInclude">
+			<title>Week 10</title>
+			<subsection>
+	<title>Self-test questions for lecture 19</title>
+	<exercise xml:id="ex-cts-riemann">
+				<title>Continuous functions are Riemann integrable</title>
+				<statement>State and prove how a continuous function on a closed interval is Riemann integrable.</statement>
+					<solution>
+					<proposition xml:id="prop-cts-riemann">
+<title>Continuous functions are Riemann integrable</title>
+<statement>
+ Let <m>a, b\in \R</m> with <m>a \lt  b</m>.
+ Let <m>f : [a,b] \to \R</m> be a continuous function.
+ Then <m>f</m> is Riemann integrable on <m>[a,b]</m>.
+</statement>
+<proof>
+ Let us suppose that <m>[a,b] = [0, 1]</m>, the general case being similar.
+ Since <m>f</m> is a continuous function on a closed interval, it is uniformly continuous (<xref ref="thm-unif-cts"/>).
+ Hence by definition of uniform continuity (<xref ref="def-unif-cts"/>):
+<me>
+(\forall \eps \gt 0)(\exists \delta = \delta(\eps) \gt 0)(\forall x,y\in [a,b]) 
+[|x-y| \leq \delta \implies |f(x)-f(y)| \leq \eps].
+</me>
+ Let 
+<me>
+\delta := \delta\brac{\eps} \qquad \text{and} \qquad N \geq \delta^{-1}
+</me>.
+ Then for any <m>n = 1, \dots, N</m> we have
+<me>
+\sup_{[\frac{n-1}{N}, \frac{n}{N}]} f - \inf_{[\frac{n-1}{N}, \frac{n}{N}]} f \leq \eps.
+</me>
+ Hence with respect to the subdivision <m>0/N \lt  1/N \lt  \dots \lt  N/N</m> we have
+<md>
+<mrow>
+0 \amp \leq U(f;[0,1])-L(f;[0,1])
+</mrow>
+<mrow>
+\amp \leq U\brac{f;\tfrac{0}{N}, \tfrac{1}{N} , \dots , \tfrac{N}{N}} - L\brac{f;\tfrac{0}{N}, \tfrac{1}{N} , \dots , \tfrac{N}{N}} \leq  \sum_{n=1}^N \tfrac{\eps}{N} = \eps.
+</mrow>
+</md>
+Letting <m>\eps \to 0</m>, it follows that <m>U(f;[0,1]) = L(f;[0,1])</m> by the inequality rule for function limits.
+</proof>
+</proposition>
+					<example xml:id="eg-non-int">
+					<p>
+The function <m>1_{\Q \cap [0,1]}</m> is not Riemann integrable on <m>[0,1]</m>.
+</p>
+<p>
+As in <xref ref="eg-dis-cont-everywhere"/>, the key observation in establishing our claim is to note that every real number <m>x_0</m> has a sequence of rationals <m>q_n \in \Q</m> such that <m>q_n \to x_0</m>. For instance, one may take
+ <me>
+ q_n := \frac{\floor{nx_0}}{n} \in \left(x_0 -\frac{1}{n}, x_0\right]
+ </me>,
+ and employ the two-sided sandwich rule (<xref ref="prop-sandwich"/>).
+ </p>
+<p>
+ One consequence of this observation is that any non-empty open interval contains a rational number, since one may approximate the mid-point by a rational.
+ It follows that if <m>0 \leq x \lt  y \leq 1</m> then  <m>(x,y)</m> contains a rational <m>q\in \Q</m> and <m>(x+\sqrt{2},y+\sqrt{2})</m> also contains a rational <m>\tilde q \in \Q</m>.
+ Hence <m>(x,y)</m> contains both a rational <m>q</m> and an irrational <m>q-\sqrt{2}</m>.
+ It follows that
+<me>
+\sup_{[x,y]} 1_{\Q\cap [0,1]} = 1 \quad \text{and}\quad \inf_{[x,y]} 1_{\Q\cap [0,1]} = 0.
+</me>
+ Hence for any subdivision <m>0 = x_0 \lt  \dots \lt  x_N = 1</m> we have
+<me>
+U(f;x_0,\dots, x_N) = \sum_{n=1}^N (x_n-x_{n-1}) \sup_{[x_{n-1}, x_n]} 1_{\Q\cap [0,1]} = \sum_{n=1}^N (x_n-x_{n-1}) = 1.
+</me>
+Thus <m>U(f;[0,1]) = 1</m>. Similarly
+<me>
+L(f;[0,1]) = 0.
+</me>
+ Therefore the function <m>1_{\Q\cap [0,1]}</m> is not Riemann integrable.
+ </p>
+</example>
+					</solution>
+			</exercise>
+			<exercise>
+			<title>Integral of derivative fundamental theorem of calculus</title>
+					<statement>State and prove the "integral of derivative" version of the fundamental theorem of calculus.</statement>
+					<solution>
+<theorem xml:id="thm-ftc-int-of-deriv">
+<title>Fundamental theorem of calculus - integral of derivative</title>
+<statement>
+ Let <m>f : (a,b) \to \R</m>.
+ Suppose that <m>f</m> is differentiable on <m>(a,b)</m>.
+ Given <m>x,y \in (a,b)</m> with <m>x \lt  y</m>, suppose that <m>f'</m> is Riemann integrable on <m>[x,y]</m>.
+ Then
+<me>
+\int_x^y f' = f(y) - f(x). 
+</me>
+</statement>
+<proof>
+ Let <m>x = x_0 \lt  \dots \lt  x_N = y</m> denote a subdivision of <m>[x,y]</m>.
+ For each <m>n</m>, the mean value theorem (<xref ref="thm-mvt"/>) gives <m>y_n \in (x_{n-1}, x_n)</m> such that 
+<me>
+f(x_n) - f(x_{n-1})  = f'(y_n)(x_n-x_{n-1}).
+</me>
+ Hence
+<me>
+f(y) - f(x) = \sum_{n=1}^N \sqbrac{f(x_n)-f(x_{n-1})} = \sum_{n=1}^N (x_n-x_{n-1})f'(y_n).
+</me>
+ Thus
+<me>
+L(f';x_0, \dots, x_N) \leq f(y)-f(x) \leq U(f';x_0, \dots, x_N).
+</me>
+ Since this holds for all subdivisions <m>x = x_0 \lt  \dots \lt  x_N = y</m>, it follows from the definition of the upper and lower Riemann integrals (<xref ref="def-up-low-riemann-integral"/>) that
+<me>
+L(f'; [a,b]) \leq f(y)-f(x) \leq U(f';[a,b]).
+</me>
+ Since <m>f'</m> is Riemann integrable on <m>[x,y]</m>, we have <m>L(f';[x,y]) = U(f';[x,y]) = \int_x^y f'</m>.
+ We deduce that <m>f(y)-f(x) = \int_x^y f'</m>.
+</proof>
+</theorem>
+					</solution>
+				</exercise>
+			
+			<exercise>
+				<title>Derivative of integral fundamental theorem of calculus</title>
+					<statement>State and prove the "derivative of integral" version of the fundamental theorem of calculus.</statement>
+					<solution>
+							<theorem xml:id="thm-ftc-deriv-of-int">
+<title>Fundamental theorem of calculus - derivative of integral</title>
+<statement>
+ Let <m>a, b \in \R</m> with <m>a \lt  b</m>.
+ Let <m>f : [a,b] \to \R</m> be Riemann integrable.
+ Define the function <m>F : [a,b] \to \R</m> at <m>x \in [a,b]</m> by<fn>Here we interpret <m>\int_a^a f</m> as 0.</fn>
+<me>
+F(x) := \int_a^x f.
+</me>
+ Then <m>F</m> is continuous on <m>[a,b]</m>
+ Moreover, if <m>f</m> is continuous at <m>x_0 \in (a,b)</m> then <m>F</m> is differentiable at <m>x_0</m> and we have
+<me>
+F'(x_0) = f(x_0).
+</me>
+</statement>
+<proof>
+<p>
+ For <m>x,y \in [a,b]</m> with <m>x \lt  y</m>, the interval additivity property (<xref ref="prop-int-sub"/>) gives that
+<me>
+\abs{\int_a^x f - \int_a^{y} f} = \abs{\int_x^y f}.
+</me>
+Since <m>f</m> is Riemann integrable it is bounded, hence there exists <m>M\in \R</m> such that
+<me>
+-M \leq \inf_{[a,b]}f \leq \sup_{[a,b]} f\leq M
+</me>.
+ Hence trivial bounds for the integral <xref ref="cor-up-low-finite"/> give that
+<me>
+\abs{F(x)-F(y)} = \abs{\int_x^y f}  \leq (y-x)M.
+</me>
+ It follows that <m>F</m> is uniformly continuous on taking <m>\delta(\eps):= \eps/M</m> in the definition of uniform continuity (<xref ref="def-unif-cts"/>).
+ </p>
+ <p>
+ Next, suppose that <m>f </m> is continuous at <m>x_0 \in (a,b)</m>.
+ Letting <m>\eps \gt 0</m>, there exists <m>\delta = \delta(\eps) \gt 0</m> such that if <m>x \in [a,b]</m> and <m>|x-x_0| \leq \delta</m> then <m>|f(x)-f(x_0)| \leq \eps</m>.
+
+ It follows that if <m>x\in [a,b]</m> with <m>x_0 \lt x\lt x_0+\delta</m> then by linearity of integration (<xref ref="thm-int-add"/>) we have
+<md>
+<mrow>
+\abs{\frac{F(x) - F(x_0)}{x-x_0} - f(x_0)}\amp = \recip{x-x_0}\abs{\int_{x_0}^{x} \brac{f(t)-f(x_0)}\intd t }
+</mrow>
+<mrow>
+\amp \leq \recip{x-x_0}\int_{x_0}^{x} \eps \intd t  = \eps.
+</mrow>
+</md>
+A similar argument shows that if <m>x\in [a,b]</m> with <m>x_0-\delta \lt x\lt x_0</m> then
+<me>
+\abs{\frac{F(x) - F(x_0)}{x-x_0} - f(x_0)} = \recip{x_0-x}\abs{\int_{x}^{x_0} \brac{f(t)-f(x_0)}\intd t} \leq \eps.
+</me>
+Hence by the definition of differentiability (<xref ref="def-differentiable"/>) we have <m>F'(x_0) = f(x_0)</m>.
+ </p>
+</proof>
+</theorem>			
+					</solution>
+				</exercise>
+			</subsection>
+			<subsection>
+	<title>Self-test questions for lecture 20</title>
+				<exercise>
+				<title>Uniform convergence</title>
+				<task>
+					<statement>Define what it means for a sequence of functions to converge pointwise.</statement>
+					<solution>
+					<definition xml:id="def-ptws-conv">
+<title>Pointwise convergence</title>
+ For each <m>n \in \N</m> let <m>f_n:S \to \R</m> be a real-valued function with domain <m>S</m> (not necessarily a set of real numbers).
+ Let <m>f : S \to \R</m>.
+ We say that the sequence of functions <m>(f_n)_{n=1}^\infty</m> <em>converges pointwise to <m>f</m> on <m>S</m></em> if 
+<me>
+(\forall x \in S)\sqbrac{\lim_{n\to \infty} f_n(x) = f(x)}.
+</me>
+</definition>					</solution>
+				</task>
+				<task>
+					<statement>Define what it means for a sequence of functions to converge uniformly.</statement>
+					<solution>
+					<definition xml:id="def-unif-conv">
+<title>Uniform convergence</title>
+ For each <m>n \in \N</m> let <m>f_n:S \to \R</m> be a real-valued function with domain <m>S</m> (not necessarily a set of real numbers).
+ Let <m>f : S \to \R</m>.
+ We say that the sequence of functions <m>(f_n)_{n=1}^\infty</m> <em>converges uniformly to <m>f</m> on <m>S</m></em> if 
+<me>
+\lim_{n\to \infty} \sup_{S}| f-f_n| = 0.
+</me>
+</definition>					</solution>
+				</task>
+				<task>
+					<statement>State and prove how uniform convergence implies pointwise convergence.</statement>
+					<solution>
+					<proposition>
+					<title>Uniform convergence implies pointwise convergence</title>
+					<statement>
+ Suppose that the <m>f_n</m> converge uniformly to <m>f</m> on <m>S</m>.
+ Then the <m>f_n</m> converge pointwise to <m>f</m> on <m>S</m>.
+</statement>
+<proof>
+ Fix <m>x \in S</m>.
+ Then 
+<me>
+|f_n(x) - f(x)| \leq \sup_{S} |f_n-f| \to 0 \quad \text{as} \quad n \to \infty.
+</me>
+ Hence by the sandwich rule (<xref ref="cor-sandwich"/>) we have <m>f_n(x) \to f(x)</m> as <m>n \to \infty</m>.
+</proof></proposition>
+					</solution>
+				</task>
+				<task>
+					<statement>Give an example to show that pointwise convergence does not necessarily imply uniform convergence.</statement>
+					<solution>
+					<example>
+					<title>Pointwise convergence does not imply uniform convergence</title>
+ Define <m>f_n : (0, 1) \to \R</m> by
+<me>
+f_n(x) = 1_{[\frac{1}{n}, 1)}.
+</me>
+ Then the <m>f_n</m> converge pointwise to <m>1_{(0,1)}</m>, but not uniformly.
+</example>
+<proof>
+ Fix <m>x \in (0,1)</m>.
+ Setting <m>N = N(x) := \ceil{1/x}</m>, if <m>n \geq N</m> then <m>1/n \leq x</m> so
+<me>
+f_n(x) = 1 = 1_{(0,1)}(x).
+</me>
+ Thus <m>f_n(x) \to 1_{(0,1)}(x)</m> as <m>n \to \infty</m>.
+ For any <m>n \in \N</m>, setting <m>x_n := 1/(2n)</m> gives <m>f_n(x_n) = 0</m> and <m>1_{(0,1)}(x_n) = 1</m>.
+ Therefore, for any <m>n \in \N</m> we have
+<me>
+\sup_{(0,1)} |f_n-1_{(0,1)}| = 1.
+</me>
+ This supremum does not tend to 0 as <m>n \to \infty</m>.
+</proof>
+					</solution>
+				</task>
+				</exercise>
+				<exercise>
+				<title>Riemann integrability is preserved under uniform convergence</title>
+					<statement>State and prove how Riemann integrability is preserved under uniform convergence.</statement>
+					<solution>
+					<proposition>
+					<title>Integrability is preserved under uniform convergence</title>
+					<statement>
+  Let <m>f, f_1, f_2, \dots:[a,b] \to \R</m>.
+ Suppose that the <m>f_n</m> converge uniformly to <m>f</m> on <m>[a,b]</m>.
+ Suppose that each <m>f_n</m> is Riemann integrable on <m>[a,b]</m>.
+ Then <m>f</m> is Riemann integrable on <m>[a,b]</m>.
+ Furthermore 
+<me>
+\int_a^b f = \lim_{n\to \infty} \int_a^b f_n.
+</me> 
+</statement>
+<proof>
+ Let <m>\eps \gt 0</m>.
+ By uniform convergence, there exists <m>N \in \N</m> such that for all <m>n \geq N</m> and all <m>x \in [a,b]</m> we have
+<me>
+f_n(x)-\eps \leq f(x) \leq f_n(x) + \eps.
+</me>
+ In particular, since <m>f_n</m> is bounded on <m>[a,b]</m>, so is <m>f</m>.
+ It follows that
+<md>
+<mrow>
+\int_a^bf_n-\eps(b-a) = \int_a^b(f_n-\eps) \leq L(f;[a,b]) \leq U(f; \amp [a,b]) \leq \int_a^b(f_n+\eps)
+</mrow>
+<mrow>
+\amp = \int_a^bf_n+\eps(b-a) .
+</mrow>
+</md>
+ Hence by two applications of the sandwich rule (<xref ref="prop-sandwich"/> and <xref ref="prop-sandwich"/>) we deduce that
+<me>
+U(f;[a,b]) \leq \lim_{n \to \infty} \int_a^b f_n \leq L(f;[a,b]).
+</me>
+ The claimed result follows.
+</proof></proposition>
+<example>
+					<title>Pointwise convergence does not imply convergence of integrals</title>
+ Define <m>f_n : [0, 1] \to \R</m> by
+<me>
+f_n(x) = n1_{(0,\frac{1}{n})}.
+</me>
+ Then the <m>f_n</m> are Riemann integrable functions which converge pointwise to the zero function, yet 
+ <me>
+ \lim_{n\to \infty}\int_0^1 f_n \neq \int_0^1\brac{\lim_{n\to\infty} f_n(x)} \intd x
+ </me>
+</example>
+<proof>
+<p>
+ Fix <m>x \in (0,1]</m>.
+ Taking <m>N=N(x) =1/x</m>, if <m>n \geq N</m> then <m>1/n \leq x</m> so
+<m>
+f_n(x) = 0
+</m>.
+ Thus <m>f_n(x) \to 0</m> on <m>[0,1]</m> (checking convergence at the endpoint <m>x=0</m> is trivial). 
+ </p>
+ <p>
+ By evaluating lower/upper Riemann sums, one can check that
+ <me>
+ \int_0^1 f_n = 1
+ </me>.
+ So it is not the case that 
+ <me>
+ \int_0^1 f_n \to \int_0^1 0\quad \text{ as } \quad n \to \infty
+ </me>.
+ </p>
+</proof>
+
+					</solution>
+				</exercise>
+				<exercise>
+				<title>Continuity is preserved under uniform convergence</title>
+					<statement>State how continuity is preserved under uniform convergence (the proof is non-examinable).</statement>
+					<solution>
+					<proposition>
+					<title>Continuity is preserved under uniform convergence</title>
+<statement>
+  Let <m>f, f_1, f_2, \dots:D \to \R</m> be real-valued functions on a real domain <m>D \subset \R</m>.
+ Suppose that the <m>f_n</m> converge uniformly to <m>f</m> on <m>D</m>.
+ Suppose that each <m>f_n</m> is continuous at  <m>x_0 \in D</m>.
+ Then <m>f</m> is continuous at <m>x_0</m>.
+</statement>
+<proof>
+<title>Proof (non-examinable)</title>
+ To show that <m>f</m> is continuous at <m>x_0</m> it suffices to establish that
+<me>
+(\forall \eps \gt 0)(\exists \delta= \delta(\eps) \gt 0)(\forall x \in D)[|x-x_0|\leq \delta \implies |f(x)-f(x_0)| \leq \eps].
+</me>
+ Since <m>f_n</m> converges to <m>f</m> uniformly, there exists <m>n</m> for which 
+<me>
+\sup_D |f_n-f| \leq \trecip{3} \eps.
+</me>
+ Since <m>f_n</m> is continuous at <m>x_0</m>, there exists <m>\delta \gt 0</m> such that if <m>x \in D</m> satisfies <m>|x-x_0| \leq \delta</m> then <m>|f_n(x)-f_n(x_0)| \leq \trecip{3}\eps</m>.
+ Hence
+<md>
+<mrow>
+|f(x)-f(x_0)| \amp \leq |f(x)-f_n(x)| + |f_n(x)-f_n(x_0)| + |f_n(x_0) - f(x_0)|
+</mrow>
+<mrow>
+\amp \leq \sup_D |f_n-f| + |f_n(x)-f_n(x_0)| + \sup_D |f_n-f|
+</mrow>
+<mrow>
+\amp \leq \trecip{3} \eps +\trecip{3} \eps +\trecip{3} \eps = \eps. 
+</mrow>
+</md>
+</proof>
+</proposition>
+					</solution>
+</exercise>		
+	</subsection>
+		</section>

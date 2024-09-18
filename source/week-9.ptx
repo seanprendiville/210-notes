@@ -1,0 +1,621 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!--
+% !TEX TS-program = PreTeXt-HTML
+-->
+<section xml:id="week-9" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Week 9</title>
+	<subsection>
+		<title>Self-test questions for lecture 17</title>
+			<exercise xml:id="task-riemann-int">
+				<title>Definition of the Riemann integral</title>
+				<task>
+					<statement>
+					Define a subdivision of a closed interval.
+					</statement>
+					<solution>
+					<definition xml:id="def-subdiv">
+<title>Subdivision</title>
+ Let <m>a,b\in \R</m> with <m>a\lt  b</m>.
+ A <em>subdivision</em> of the interval <m>[a,b]</m> is a strictly increasing finite sequence of the form
+<me>
+a= x_0 \lt  x_1 \lt  \dots \lt  x_N = b
+</me>
+for some <m>N \in \N</m>.
+ We sometimes denote such a subdivision by <m>(x_n)_{n=0}^N = (x_0, x_1, \dots, x_N)</m>.
+</definition>
+					</solution>
+				</task>
+				<task>
+					<statement>
+					Define the upper/lower Riemann sum of a function with respect to a subdivision.
+					</statement>
+					<solution>
+					<definition xml:id="def-riemann-sum">
+<title>Riemann sum</title>
+ Let <m>a, b\in \R</m> with <m>a\lt  b</m>.
+ Let <m>f : [a,b] \to \R</m> be a bounded<fn>See <xref ref="def-upper-bound"/>.</fn> function.
+ Let <m>a = x_0 \lt  x_1\lt  \dots \lt  x_N = b</m> be a subdivision of <m>[a,b]</m>.
+ We define the <em>upper Riemann sum</em> of <m>f</m> with respect to this subdivision by 
+<me>
+U(f; x_0, \dots, x_N) := \sum_{n=1}^N (x_n-x_{n-1}) \sup_{ [x_{n-1}, x_n]} f.
+</me>
+ We define the <em>lower Riemann sum</em> of <m>f</m> with respect to this subdivision by 
+<me>
+L(f; x_0, \dots, x_N) := \sum_{n=1}^N (x_n-x_{n-1}) \inf_{ [x_{n-1}, x_n]} f.
+</me>
+ Notice that both the upper and lower Riemann sums are finite real numbers, since the fact that  <m>f</m> is bounded implies that 
+<mdn>
+<mrow number="no">
+-\infty \amp \lt (b-a)\inf_{[a,b]} f = \sum_{n=1}^N (x_n-x_{n-1}) \inf_{ [a,b]} f
+</mrow>
+<mrow number="no">
+\amp \leq \sum_{n=1}^N (x_n-x_{n-1}) \inf_{ [x_{n-1}, x_n]} f = L(f; x_0, \dots, x_N)
+</mrow>
+<mrow number="no">
+\amp\leq  \sum_{n=1}^N (x_n-x_{n-1}) \sup_{ [x_{n-1}, x_n]} f = U(f; x_0, \dots, x_N)
+</mrow>
+<mrow number="no">
+\amp \leq  \sum_{n=1}^N (x_n-x_{n-1}) \sup_{ [a,b]} f 
+</mrow>
+<mrow xml:id="cor-up-low-finite">
+\amp = (b-a)\sup_{[a,b]} f\lt  \infty.
+</mrow>
+</mdn>
+</definition>					</solution>
+				</task>
+				<task>
+					<statement>
+					Define the upper/lower Riemann integral of a function.
+					</statement>
+					<solution>
+					<definition xml:id="def-up-low-riemann-integral">
+<title>Upper/lower Riemann integral</title>
+ Let <m>a, b\in \R</m> with <m>a\lt  b</m>.
+ Let <m>f : [a,b] \to \R</m> be a bounded function.
+ We define the <em>upper Riemann integral</em> of <m>f</m> to be the infimum of the upper Riemann sum over all possible subdivisions:  
+<me>
+U(f;[a,b]) 
+:= \inf\set{U(f;x_0,\dots, x_N): a= x_0 \lt  \dots \lt  x_N = b,\ N \in \N}.
+</me>
+ We define the <em>lower Riemann integral</em> of <m>f</m> to be the supremum of the lower Riemann sum over all possible subdivisions: 
+<me>
+L(f;[a,b]) 
+:= \sup\set{L(f;x_0,\dots, x_N): a= x_0 \lt  \dots \lt  x_N = b,\ N \in \N}.
+</me>
+</definition>					</solution>
+				</task>
+				<task>
+					<statement>Define what it means for a function to be Riemann integrable and define the Riemann integral.
+					</statement>
+					<solution>
+					<definition xml:id="def-riemann-integral">
+<title>Riemann integrable and Riemann integral</title>
+ Let <m>a, b\in \R</m> with <m>a\lt  b</m>.
+ Let <m>f : [a,b] \to \R</m> be a bounded function.
+ We say that <m>f</m> is <em>Riemann</em><fn>On occasion, we may say <em>"<m>f</m> is integrable"</em>, by which we mean that <m>f</m> is <em>Riemann</em> integrable.</fn> <em>integrable on <m>[a,b]</m>}</em> if the upper and lower Riemann integrals coincide, so that
+<me>
+U(f;[a,b]) = L(f;[a,b]).
+</me>
+ In this case we define the <em>Riemann integral of <m>f</m> on <m>[a,b]</m></em> to be this common value, denoted
+<me>
+\int_a^b f \qquad \text{or} \qquad \int_a^b f(x) \intd x.
+</me>
+ We also define
+<me>
+\int_b^a f := -\int_a^b f.
+</me>
+</definition>					</solution>
+				</task>
+			</exercise>
+
+<exercise>
+				<title>Riemann sums are monotone with respect to refinements</title>
+				<task>
+					<statement>Define what it means to be a refinement of a subdivision.
+					</statement>
+					<solution>
+					<definition xml:id="def-refinement">
+<title>Refinement of a subdivision</title>
+ Let <m>a, b\in \R</m> with <m>a\lt  b</m>.
+ We say that the subdivision <m>a = y_0 \lt  \dots \lt  y_{M} = b</m> is a <em>refinement</em> of the subdivision <m>a =  x_0 \lt  \dots \lt   x_{ N} = b</m> if
+<me>
+\set{x_0, x_1, \dots, x_N} \subset \set{y_0, y_1,\dots, y_{M}}.
+</me>
+ Given subdivisions <m>a =  x_0 \lt  \dots \lt   x_{ N} = b</m> and <m>a = y_0 \lt  \dots \lt  y_{M} = b</m>  (not necessarily refinements of each other) their <em>common refinement</em> is the subdivision <m>a = z_0 \lt  \dots \lt  z_T = b</m> obtained by ordering the union
+<me>
+\set{x_0, \dots , x_N} \cup \set{y_0, \dots, y_M}  = \set{z_0, \dots, z_T}.
+</me>
+</definition>					</solution>
+				</task>
+				<task>
+					<statement>State and prove how Riemann sums are monotone with respect to refinements.
+					</statement>
+					<solution>
+					<proposition xml:id="prop-mono-riemann-refine">
+<title>Riemann sums are monotone with respect to refinements</title>
+<statement>
+ Let <m>a, b\in \R</m> with <m>a\lt  b</m>.
+ Let <m>f : [a,b] \to \R</m> be a bounded function.
+ Let <m>a = y_0 \lt  \dots \lt  y_M = b</m>  be a refinement of <m>a= x_0 \lt  \dots \lt  x_N = b</m>.
+  Then
+<md>
+<mrow>
+L(f;x_0,\dots, x_N)\amp \leq L(f; y_0, \dots, y_M)
+</mrow>
+<mrow>
+\amp \leq U(f; y_0, \dots, y_M) \leq U(f;x_0,\dots, x_N).
+</mrow>
+</md>
+</statement>
+<proof> Let <m>x_1, x_2, x_3 \in [a,b]</m> with <m>x_1 \lt  x_2 \lt  x_3</m>.
+ Since taking a supremum over a larger set does not decrease the supremum, we have 
+<me>
+\sup_{t \in [x_1, x_2]} f(t) \leq \sup_{t \in [x_1, x_3]} f(t) \quad \text{and} \quad \sup_{t \in [x_2, x_3]} f(t) \leq \sup_{t \in [x_1, x_3]} f(t).
+</me>
+ Therefore
+<md>
+<mrow>
+\amp(x_2 - x_1) \sup_{t \in [x_1, x_2]} f(t) + (x_3 - x_2)  \sup_{t \in [x_2, x_3]} f(t)
+</mrow>
+<mrow>
+\amp\leq (x_2 - x_1) \sup_{t \in [x_1, x_3]} f(t) + (x_3 - x_2) \sup_{t \in [x_1, x_3]} f(t)
+=
+(x_3 - x_1) \sup_{t \in [x_1, x_3]} f(t).
+</mrow>
+</md>
+ It follows that adding a point to a subdivision does not increase the value of the upper Riemann sum.
+ Repeatedly applying this fact a finite number of times, we deduce that adding a finite number of points to a subdivision does not increase the value of the corresponding Riemann sum.
+ This proves the inequality
+<me>
+U(f; y_0, \dots, y_M) \leq U(f;x_0,\dots, x_N).
+</me>
+ The argument for the inequality 
+<me>
+L(f;x_0,\dots, x_N)\leq L(f; y_0, \dots, y_M)
+</me>
+is similar (try it!).
+ The inequality 
+<me>
+L(f; y_0, \dots, y_M) \leq U(f; y_0, \dots, y_M)
+</me>
+follows from the fact that
+<me>
+\inf_{ [y_{n-1}, y_n]} f \leq \sup_{ [y_{n-1}, y_n]} f.
+</me>
+</proof>
+</proposition>
+</solution>
+</task>
+<task>
+<statement>Deduce how lower Riemann sums never exceed upper Riemann sums</statement>
+<solution>
+<corollary xml:id="cor-lower-upper">
+<title>Lower Riemann sums never exceed upper Riemann sums</title> 
+<statement>
+Let <m>a, b\in \R</m> with <m>a\lt  b</m> and let <m>f : [a,b] \to \R</m> be a bounded function. Then for any subdivisions <m>a = y_0 \lt  \dots \lt  y_M = b</m> and <m>a= x_0 \lt  \dots \lt  x_N = b</m> we have
+<me>
+L(f;y_0, \dots, y_M)\leq U(f;x_0, \dots, x_N)
+</me>.
+In particular
+<me>
+L(f;[a,b])\leq U(f;[a,b])
+</me>.
+</statement>
+</corollary>
+<proof>
+Let <m>a = z_0 \lt \dots \lt z_T = b</m> be the common refinement of <m>a = y_0 \lt  \dots \lt  y_M = b</m> and <m>a= x_0 \lt  \dots \lt  x_N = b</m>, so that 
+<me>
+\set{x_0, \dots , x_N} \cup \set{y_0, \dots, y_M}  = \set{z_0, \dots, z_T}
+</me>.
+Since Riemann sums are monotone with respect to refinements, and since <m>\inf_{[z_{n-1},z_n]}f \leq \sup_{[z_{n-1},z_n]}f</m>, we have
+<md>
+<mrow>
+L(f;y_0, \dots, y_M) \leq L(f;z_0, \dots, z_T)\amp \leq U(f;z_0, \dots, z_T) </mrow>
+<mrow>
+\amp \leq U(f; x_0, \dots, x_N)
+</mrow>
+</md>.
+Taking a supremum over the all possible <m>a = y_0 \lt  \dots \lt  y_M = b</m> gives that
+<me>
+L(f;[a,b]) \leq  U(f; x_0, \dots, x_N)
+</me>.
+Taking an infimum over all possible <m>a= x_0 \lt  \dots \lt  x_N = b</m> gives that 
+<me>
+L(f;[a,b]) \leq  U(f; [a,b])
+</me>.
+</proof>
+					</solution>
+				</task>
+			</exercise>
+
+		<exercise xml:id="ex-mono-riemann">
+		<title>Monotone functions are Riemann integrable</title>
+					<statement> State and prove how a monotone function on a closed interval is integrable.</statement>
+					<solution>
+						<proposition xml:id="prop-mono-riemann">
+							<title>Monotone functions are integrable</title>
+							<statement>
+ Let <m>a, b\in \R</m> with <m>a \lt  b</m>.
+ Let <m>f : [a,b] \to \R</m> be a monotone function.
+ Then <m>f</m> is Riemann integrable on <m>[a,b]</m>.
+							</statement>
+							<proof>
+							<p>
+							We are required to prove that <m>f</m> is bounded (so that the upper/lower Riemann sums/integrals are defined) and that <m>L(f;[a,b]) = U(f;[a,b])</m>. Let us suppose that <m>f</m> is increasing and that <m>[a,b] = [0,1]</m>, the  general case being similar.
+							</p>
+							<p>
+ Since <m>f</m> is increasing, for any sub-interval <m>[c,d]\subset [0,1]</m> we have
+<me>
+\sup_{[c,d]} f = f(d) \quad \text{and}\quad \inf_{[c,d]} f= f(c).
+</me>
+ In particular, since <m>\sup_{[0,1]} f = f(1)</m> and <m>\inf_{[0,1]}f= f(0)</m>, we see that <m>f</m> is bounded on <m>[0,1]</m>.
+ 							</p>
+							<p>
+Next let us show that <m>L(f;[a,b]) = U(f;[a,b])</m>. For any <m>N \in \N</m> consider the subdivision
+<me>
+\frac{0}{N} \lt  \frac{1}{N} \lt  \frac{2}{N} \lt  \dots \lt  \frac{N}{N}.
+</me>
+ Then we have
+<md>
+<mrow>
+0\leq U(f;[a,b]) - L(f;[a,b])\amp \leq U\brac{f; \tfrac{0}{N}, \tfrac{1}{N}, \dots, \tfrac{N}{N}} -  L\brac{f; \tfrac{0}{N}, \tfrac{1}{N}, \dots, \tfrac{N}{N}} 
+</mrow>
+<mrow>
+\amp = \sum_{n=1}^N \frac{f\brac{\frac{n}{N}}}{N} - \sum_{n=1}^{N} \frac{f\brac{\frac{n-1}{N}}}{N}
+</mrow>
+<mrow>
+\amp = \frac{f\brac{1}}{N} - \frac{f\brac{0}}{N} .
+</mrow>
+</md>
+ Since the latter quantity tends to zero as <m>N \to \infty</m>, we have that <m>U(f;[a,b]) = L(f;[a,b])</m>.
+ </p>
+</proof>
+</proposition>
+					</solution>
+				</exercise>		
+	</subsection>
+	<subsection>
+	<title>Self-test questions for lecture 18</title>		
+			<exercise>
+				<title>Linearity of integration</title>
+				<task>
+					<statement>State and prove how the Riemann integral respects addition and scaling.</statement>
+					<solution>
+					<theorem xml:id="thm-int-add">
+<title>Linearity of integration</title>
+<statement>
+ Let <m>a, b,c\in \R</m> with <m>a\lt  b</m>.
+ Let <m>f,g : [a,b] \to \R</m> be functions which are Riemann integrable on <m>[a,b]</m>.
+ Then  <m>f+g</m> and <m>cf</m> are both Riemann integrable on <m>[a,b]</m>.
+ Moreover
+<me>
+\int_a^b\brac{f+g}= \int_a^bf+\int_a^bg \quad\text{and}\quad \int_a^b(cf) = c\int_a^bf
+</me>.
+</statement>
+<proof>
+Let us proof the claim about addition (the claim about scaling follows a similar argument).
+Fix <m>\eps \gt 0</m>.
+ Since increasing an infimum gives a non-lower bound, there exist subdivisions <m>a= x_0 \lt  \dots \lt  x_N = b</m> and <m>a = y_0 \lt  \dots \lt  y_M = b</m> such that
+ <me>
+ U(f;x_0, \dots, x_N) \leq \int_a^bf+\eps \quad\text{and}\quad U(g;y_0, \dots, y_M) \leq \int_a^bg+\eps.
+ </me>
+ Letting <m>a= z_0 \lt  \dots \lt  z_T = b</m> denote the common refinement of <m>(x_0, \dots, x_N)</m> and <m>(y_0, \dots, y_M)</m>, monotonicty of Riemann sums under refinements (<xref ref="prop-mono-riemann-refine"/>) gives that
+ <me>
+U(f;z_0,\dots, z_T) + U(g;z_0, \dots, z_T) \leq \int_a^b f + \int_a^b g + 2\eps
+</me>.
+Since <me>\sup_{[z_{n-1}, z_n]} f + \sup_{[z_{n-1}, z_n]} g</me> is an upper bound for the set <me>\set{f(x)+g(x) : x \in [z_{n-1}, z_n]}</me>, we have that
+<me>
+\sup_{[z_{n-1}, z_n]} (f + g) \leq\sup_{[z_{n-1}, z_n]} f + \sup_{[z_{n-1}, z_n]} g
+</me>.
+Therefore
+<me>
+U(f+g;z_0, \dots, z_T)\leq U(f;z_0,\dots, z_T) + U(g;z_0, \dots, z_T)
+</me>,
+and thus
+<me>
+U(f+g;[a,b]) \leq \int_a^b f + \int_a^b g + 2\eps
+</me>.
+A similar argument shows that
+<me>
+L(f+g;[a,b]) \geq \int_a^b f + \int_a^b g - 2\eps.
+</me>
+Letting <m>\eps \to 0</m> and using the inequality <m>L(f+g;[a,b]) \leq U(f+g;[a,b])</m> (proved in <xref ref="cor-lower-upper"/>), the sandwich rule then yields that
+<me>
+U(f+g;[a,b]) = L(f+g;[a,b]) = \int_a^b f + \int_a^b g
+</me>.
+ </proof>
+ </theorem>
+					</solution>
+				</task>
+				<task>
+					<statement>Deduce how the Riemann integral respects pointwise inequalities.</statement>
+					<solution>
+					<corollary xml:id="cor-int-ineq">
+<title>Inequality rule for the Riemann integral</title>
+<statement>
+ Let <m>a, b\in \R</m> with <m>a\lt  b</m>.
+ Let <m>f,g : [a,b] \to \R</m> be functions which are Riemann integrable on <m>[a,b]</m>.
+ Suppose that <m>f \leq g</m> everywhere on <m>[a,b]</m>.
+ Then 
+<me>
+\int_a^bf\leq \int_a^bg.
+</me>
+</statement>
+<proof>
+ By the addition and scaling rules (<xref ref="thm-int-add"/>) the function <m>g-f</m> is Riemann integrable.
+ Using the addition and scaling rules, and the definition of the Riemann integral, we have
+<me>
+\int_a^bg - \int_a^bf =\int_a^b(g-f) \geq L(g-f;a,b) = (b-a)\inf_{[a,b]} (g-f). 
+</me>
+ Since <m>g-f\geq 0</m> on <m>[a,b]</m>, we have 
+<me>
+(b-a)\inf_{[a,b]} (g-f) \geq 0.
+</me>
+ This yields the required inequality.
+</proof>
+</corollary>					</solution>
+				</task>
+			</exercise>
+					<exercise>
+				<title>Integrating on a sub-interval</title>
+				<statement>
+				State and prove how a Riemann integrable function is still Riemann integrable on any closed subinterval of its domain.
+				</statement>
+				<solution>
+				<proposition xml:id="prop-int-sub">
+				<statement>
+				Let <m>a,b\in \R</m> with <m>a\lt b</m> and let <m>f :[a,b]\to \R</m> be Riemann integrable. Then for any <m>x\in [a,b]</m> we have that <m>f</m> is Riemann integrable on both <m>[a,x]</m> and <m>[x,b]</m> with 
+				<me>
+				\int_a^b f = \int_a^x f+ \int_x^b f.
+				</me>
+				</statement>
+				<proof>
+				<p>
+				Since increasing an infimum gives a non-lower bound, there exist a subdivision <m>a= x_0 \lt  \dots \lt  x_N = b</m> such that
+				 <me>
+ U(f;x_0, \dots, x_N) \leq \int_a^bf+\eps
+ </me>.
+Since decreasing a supremum gives a non-upper bound, there exist a subdivision <m>a= y_0 \lt  \dots \lt  y_M = b</m> such that
+				 <me>
+ L(f;y_0, \dots, y_M) \geq \int_a^bf-\eps
+ </me>.
+ Let <m>a= z_0 \lt  \dots \lt  z_T = b</m> denote a common refinement of <m>(x_0, \dots, x_N)</m> and <m>(y_0, \dots, y_M)</m> which also contains the point <m>x = z_m</m> for some <m>m</m>. Then monotonicty of Riemann sums under refinements (<xref ref="prop-mono-riemann-refine"/>) gives that
+ <me>
+0\leq U(f;z_0,\dots, z_T) - L(f;z_0, \dots, z_T) \leq  2\eps.
+</me>.
+Since <m>a= z_0 \lt \dots \lt z_m = x</m> is a subdivision of <m>[a,x]</m> we have that
+<md>
+<mrow>
+0\amp \leq U(f; [a,x])-L(f;[a,x])\leq U(f;z_0,\dots, z_m) - L(f;z_0, \dots, z_m) \leq
+</mrow>
+<mrow>
+\amp  U(f;z_0,\dots, z_m) - L(f;z_0, \dots, z_m) + U(f;z_m,\dots, z_T) - L(f;z_m, \dots, z_T)  
+</mrow>
+<mrow>
+\amp =  U(f;z_0,\dots, z_T) - L(f;z_0, \dots, z_T) \leq  2\eps
+</mrow>
+</md>.
+Letting <m>\eps \to 0</m> then establishes that <m>U(f;[a,x])= L(f;[a,x])</m>, so that <m>f</m> is Riemann integrable on <m>[a,x]</m>.
+</p>
+<p>
+A similar argument to that given above shows that <m>f</m> is Riemann integrable on <m>[x,b]</m>. 
+</p>
+<p>
+For the addition formula, we may use the same subdivision <m>a= z_0 \lt  \dots \lt  z_T = b</m> constructed above to see that
+<md>
+<mrow>
+\int_a^xf + \int_x^bf \amp \leq U(f;z_0,\dots, z_m)+U(f;z_m,\dots, z_T)
+</mrow>
+<mrow>
+\amp = U(f; z_0, \dots, z_T) \leq \int_a^b f + \eps
+</mrow>
+</md>.
+Similarly
+<me>
+\int_a^x f+\int_x^bf \geq \int_a^b f-\eps
+</me>.
+Again letting <m>\eps \to 0</m> then gives the addition formula.
+</p>
+				</proof>
+				</proposition>
+				</solution>
+			</exercise>
+			</subsection>
+			<subsection>
+			<title>Workshop questions</title>
+			<exercise>
+<title>
+True/false workshop quiz
+</title>
+<introduction>
+In your workshop, you will vote on whether you think each of the following statements is true (thumbs up) or false (thumbs down). For each question, your workshop tutor will ask one of you to briefly justify your vote. This justification can involve giving a counterexample (if false) or outlining which definition/theorem the statement  follows from (if true).
+</introduction>
+	<task>
+	<statement> 
+	Consider the function 
+	<me>
+	f(x):= \begin{cases} x  \amp \text{ if } x\leq 0,\\
+					0 \amp \text{ if } 0 \lt x \lt 1,\\
+					x-1 \amp \text{ if } x \geq 1.
+					\end{cases}
+	</me> Then <m>f</m> has a local maximum at <m>x=1/2</m>.
+	</statement>
+	</task>
+	<task>
+	<statement> 
+	If a function <m>f</m> has a local minimum at <m>x_0</m>, then <m>f'(x_0) = 0</m>.
+	</statement>
+	</task>
+	<task>
+	<statement> 
+	If a function <m>f:\R\to\R</m> has a maximum at <m>x_0</m>, then for any <m>x\lt x_0</m> we have
+	<me>
+	\frac{f(x)-f(x_0)}{x-x_0} \geq 0
+	</me>.
+	</statement>
+	</task>
+	<task>
+	<statement> 
+	There exists a function <m>f:[0,1]\to \R</m> which is differentiable on <m>(0,1)</m> and has <m>f(0) = f(1)</m>, yet the derivative of <m>f</m> is never zero on <m>(0,1)</m>.
+	</statement>
+	</task>
+	<task>
+	<statement> 
+	It follows from the mean value theorem that if <m>f:\R\to \R</m>  is differentiable with <m>|f'(x)|\leq 100</m> for all <m>x</m>, then for all <m>x_1,x_2 \in \R</m> we have
+	<me>
+	|f(x_1)-f(x_2)|\leq 100|x_1-x_2|
+	</me>.
+	</statement>
+	</task>
+	<task>
+	<statement> 
+	If a function <m>f:[a,b]\to \R</m>  is Riemann integrable then for any subdivision <m>a=x_0\lt \dots\lt x_N=b</m> we have
+	<me>
+	L(f;x_0, \dots, x_N) = U(f;x_0, \dots, x_N)
+	</me>.
+	</statement>
+	</task>
+	<task>
+	<statement> 
+	For any bounded function <m>f:[a,b]\to \R</m> we have
+	<me>
+	U(f;a, \tfrac{a+b}{2}, b) \leq U(f;a,b)
+	</me>.
+	</statement>
+	</task>
+	<task>
+	<statement> 
+	For any bounded function <m>f:[a,b]\to \R</m> we have
+	<me>
+	U(f;[a,b]) \leq L(f;[a,b])
+	</me>.
+	</statement>
+	</task>
+	<task>
+	<statement> 
+	If <m>f:[a,b]\to \R</m> is a monotone function then
+	<me>
+	\int_a^b f = f(b)-f(a)
+	</me>.
+	</statement>
+	</task>
+	<task>
+	<statement> 
+	If <m>f:[a,b]\to \R</m> is a Riemann integrable then the function
+	<me>
+	F(x) := \int_a^x f
+	</me> is defined at every  <m>x \in [a,b]</m>.
+	</statement>
+	</task>
+	</exercise>
+	<exercise>
+<title>Exam-style self-test question for workshop</title>
+<introduction>
+		Let <m>f :[0,1] \to \R</m> be bounded.
+</introduction>
+		<task>
+			<statement>
+				<p>
+				Define what it means to be:
+				<ol>
+				<li> a subdivision of <m>[0,1]</m>;</li>
+				<li> the upper and lower Riemann sums of <m>f</m> with respect to a subdivision;</li>
+				<li> the upper and lower Riemann integrals of <m>f</m> and what it means for <m>f</m> to be Riemann integrable.</li>
+				</ol>
+				</p>
+				</statement>
+			<solution>
+				<p>
+					This is <xref ref="task-riemann-int"/>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+				Prove that there exist subdivisions <m>0=a_0 \lt a_1 \lt \dots \lt a_P = 1</m> and  <m>0=b_0 \lt b_1 \lt \dots \lt b_Q = 1</m> such that 
+					<md>
+					<mrow>
+					L(f;[0,1]) - 0.05 \leq L(f;a_0, \dots, a_P),
+					</mrow>
+					<mrow>
+					U(f;b_0, \dots, b_Q) \leq U(f;[0,1]) + 0.05.
+					</mrow>
+					</md>
+				</p>
+				</statement>
+			<solution>
+				<p>
+					This is a special case of the argument given at the start of the proof of  <xref ref="prop-mono-riemann-refine"/>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				Using the previous part and clearly stating any results from the course which you use, explain how if <m>f</m> is Riemann integrable, then there exists a subdivision <m>0=x_0 \lt \dots \lt x_N = 1</m> such that
+					<me>
+					|U(f;x_0, \dots, x_N) - L(f;x_0, \dots, x_N)| \leq 0.1.
+					</me>
+				</statement>
+			<solution>
+				<p>
+					This is a special case of the argument given in the proof of  <xref ref="prop-mono-riemann-refine"/>.
+				</p>
+			</solution>
+		</task>
+</exercise>
+<exercise>
+<title>Exam-style self-test question for workshop</title>
+<statement>
+Let <m>f : [0,1] \to \R</m> be a decreasing function. Prove that <m>f</m> is Riemann integrable on <m>[0,1]</m>. (In your proof, you may assume the inequality <m>U(f;[0,1]) \geq L(f;[0,1])</m>.)
+</statement>
+			<solution>
+				<p>
+					This is a variant of the proof of <xref ref="ex-mono-riemann"/>.
+				</p>
+			</solution>
+</exercise>
+<exercise>
+<title>Exam-style self-test question for workshop</title>
+		<task>
+			<statement>
+				<p>
+				State both Rolle's theorem and the mean value theorem.
+								
+				</p>
+				</statement>
+			<solution>
+				<p>
+					This is part of <xref ref="ex-rolle"/> and <xref ref="ex-mvt"/>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+				Let <m>f:[a,b]\to \R</m> be a continuous function which is differentiable on <m>(a,b)</m>. Explain why the function
+				<me>
+				g(x) := f(x) - \frac{f(b)-f(a)}{b-a}(x-a)
+				</me>
+				is continuous on <m>[a,b]</m> and differentiable on <m>(a,b)</m>.
+				</p>
+				</statement>
+			<solution>
+				<p>
+					This is part of the proof in  <xref ref="ex-mvt"/>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				Using the previous part or otherwise, prove the mean value theorem assuming Rolle's theorem.
+				</statement>
+			<solution>
+				<p>
+					This is part of the proof in  <xref ref="ex-mvt"/>.
+				</p>
+			</solution>
+		</task>
+</exercise>
+</subsection>
+</section>

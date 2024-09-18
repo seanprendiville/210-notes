@@ -1,0 +1,474 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!--
+% !TEX TS-program = PreTeXt-HTML
+-->
+<section xml:id="week-4" xmlns:xi="http://www.w3.org/2001/XInclude">
+			<title>Week 4</title>
+			<subsection>	
+			<title>Self-test questions for lecture 7</title>
+			<exercise xml:id="ex-series-def">
+			 	<title>Infinite series and convergence</title>
+					<statement>
+					Given a sequence of real numbers, define the corresponding <em><m>N</m>th partial sum</em> and <em>infinite series</em>. When do we say the infinite series <em>exists</em>? What is a <em>term</em> of an infinite series? What does it mean to say a series <em>converges</em>?
+					</statement>
+					<solution>
+						<definition>
+							<title>Infinite series</title>
+							<statement>
+							<p>
+Given a sequence of real numbers <m>(a_n)_{n=1}^\infty</m> and <m>N\in \N</m>, the <em><m>N</m>th partial sum</em> is given by
+<me>
+\sum_{n=1}^N a_n := a_1 + a_2 + \dots + a_N.
+</me>
+If the sequence of partial sums tends to a limit as <m>N \to \infty</m>, then the corresponding  <em>infinite series</em> exists and is equal to the limit
+<me>
+ \lim_{N\to\infty} \sum_{n=1}^Na_n, \quad \text{written}\quad \sum_{n=1}^\infty a_n.
+</me>
+The <em>terms</em> of the infinite series <m>\displaystyle \sum_{n=1}^\infty a_n</m> are the summands <m>a_n</m>.
+</p>
+<p>
+If the limit  <m>\displaystyle\sum_{n=1}^\infty a_n=\lim_{N\to \infty} \sum_{n=1}^N a_n</m> exists and equals a <em>finite real number</em>, then we say that the series <m>\displaystyle\sum_{n=1}^\infty a_n </m> is <em>convergent</em>.	
+</p>
+</statement>
+</definition>
+<example xml:id="eg-geo-series">
+							<title>Geometric series</title>
+							If <m>|x|\lt 1</m>, then
+							<me>
+\sum_{n=0}^\infty x^n = \frac{1}{1-x}.
+</me>
+				<proof>			
+We have 
+<me> \sum_{n=0}^N x^n  = 1 + \brac{x\sum_{n=0}^{N-1} x^n}  =  1+ \brac{x\sum_{n=0}^N x^n}- x^{N+1} .</me>
+ Re-arranging (provided that <m>x \neq 1</m>) gives
+<me>
+\sum_{n=0}^N x^n = \frac{1-x^{N+1}}{1-x}.
+</me>
+ If <m>|x| \lt  1</m> then <m>x^N \to 0</m> as <m>N\to \infty</m>  by <xref ref="prop-exp-poly"/> and <xref ref="prop-inf-recip-rule"/>. By the algebra of limits (<xref ref="prop-add-rule"/>, <xref ref="prop-mult-rule"/> and <xref ref="prop-recip-rule"/>) we have
+<me>
+\lim_{N \to \infty} \sum_{n=0}^N x^n = \lim_{N \to \infty} \frac{1-x^{N+1}}{1-x} = \frac{1 - x\displaystyle\lim_{N\to \infty} x^N}{1-x} = \frac{1}{1-x}.
+</me>
+</proof>
+</example>
+<example>
+<title>A series which does not converge but which exists</title>
+<p>
+Set <m>a_n := 1/2</m> for <m>n=1, 2, \dots</m>. Then the partial sums satisfy
+<me>
+\sum_{n=1}^N a_n = \frac{N}{2} \to \infty \quad \text{as } N \to \infty.
+</me>
+Thus <m>\sum_{n=1}^\infty 1/2</m> exists, but is not convergent (it equals <m>\infty</m>).
+</p>
+</example>
+<example>
+<title>A series which does not exist</title>
+<p>
+Set <m>a_n := (-1)^n</m> for <m>n=1, 2, \dots</m>. Then the partial sums satisfy
+<m>
+\sum_{n=1}^N a_n = -1</m> if <m>N</m> is odd and <m>\sum_{n=1}^N a_n = 0</m> if <m>N</m> is even. It follows that the sequence of partial sums has a subsequence with limit <m>-1</m> and a subsequence with limit <m>0</m>. Therefore the sequence of partial sums cannot tend to a limit, since if a sequence has a limit all its subsequences tend to the same limit (<xref ref="prop-subseq-conv"/>). Thus <m>\sum_{n=1}^\infty (-1)^n</m> does not exist.
+</p>
+</example>
+					</solution>
+				</exercise>
+				<exercise>
+				<title>Series of non-negative terms are well-defined</title>
+					<statement>
+					Justify why an infinite series always exists when the terms are non-negative.
+					</statement>
+					<solution>
+					<proposition xml:id="rem-non-neg-seq">
+					<title>Series of non-negative terms always exist</title>
+					<statement>
+					Let <m>(a_n)_{n=1}^\infty</m> be a non-negative sequence, so that <m>a_n \geq 0</m> for all <m>n\in \N</m>. Then the series <m>\sum_{n=1}^\infty a_n</m> exists, although it may equal <m>\infty</m>.
+					</statement>
+					<proof>
+ Since <m>a_n \geq 0</m> for all <m>n\in \N</m>, the sequence of partial sums 
+<me>
+a_1 \quad \leq\quad a_1 + a_2 \quad \leq\quad a_1 + a_2 + a_3 \quad \leq\quad \dots 
+</me>
+is an increasing sequence of real numbers.
+ Hence by the monotone convergence principle (<xref ref="prop-mono-lim"/>), the limit
+<me>
+\sum_{n=1}^\infty a_n = \lim_{N\to \infty} \sum_{n=1}^Na_n
+</me>
+always exists, but is possibly <m>\infty</m>.
+</proof>
+</proposition>
+<remark>
+ We write
+<me>
+\sum_{n=1}^\infty a_n \lt  \infty
+</me>
+to indicate that the series converges to a real number (when the underlying sequence <m>(a_n)</m> is non-negative).
+</remark>
+					</solution>
+				</exercise>
+				<exercise>
+				<title>Absolute convergence</title>
+					<task>
+					<statement>
+					Define what it means for an infinite series to be <em>absolutely convergent</em>.
+					</statement>
+					<solution>
+					<definition>
+					<title>Absolute convergence</title>
+					<statement>
+					We say that the series <m>\displaystyle\sum_{n=1}^\infty a_n</m> is <em>absolutely convergent</em> if
+<me>
+\sum_{n=1}^\infty |a_n| \lt  \infty.
+</me>
+					</statement>
+					</definition>
+					</solution>
+					</task>
+					<task xml:id="task-abs-conv">
+					<statement>State and prove how absolute convergence implies convergence.
+					</statement>
+					<solution>
+						<proposition xml:id="prop-abs-conv">
+							<title>Absolute convergence implies convergence</title>
+							<statement>
+							<p>
+ Let <m>(a_n)_{n=1}^\infty</m> be a sequence of real numbers.  If
+<m>\displaystyle
+\sum_{n=1}^\infty |a_n| \lt  \infty
+</m>
+then the series 
+<m>\displaystyle
+\sum_{n=1}^\infty a_n
+</m>
+converges to a finite real number. 
+</p>
+<p>
+In addition, we have the infinite triangle inequality
+<men xml:id="item-inf-tri">
+\abs{\sum_{n=1}^\infty a_n }\leq \sum_{n=1}^\infty |a_n|.
+</men>
+</p>
+</statement>
+<proof>
+<p>
+Recall that the limit <m>\sum_n |a_n|</m> always exists (but is possibly infinite), by the monotone convergence principle (<xref ref="prop-mono-lim"/>), as in <xref ref="rem-non-neg-seq"/>.
+ To prove that the series <m>\sum_n a_n</m> converges, it suffices to prove that the sequence of partial sums <m>\sum_{n=1}^N a_n</m> is a Cauchy sequence (<xref ref="def-cauchy"/>), since Cauchy sequences converge (<xref ref="prop-cauchy"/>).
+ To this end, let <m>\eps \gt 0</m>. Since we are assuming that <m>\sum_{n=1}^N |a_n|</m> tends to a real limit as <m>N \to \infty</m>, we know that this is a Cauchy sequence (<xref ref="prop-cauchy"/>). 
+ Hence there exists <m>N_0 \in \N</m> such that for all <m>M\gt N \geq N_0</m> we have
+<me>
+\eps \geq \abs{\sum_{n=1}^M |a_n| - \sum_{n=1}^N |a_n|} = \sum_{n=N+1}^M |a_n|.
+</me>
+ By the triangle inequality, for all <m>M \gt N \geq N_0</m> we have that
+<me>
+\abs{ \sum_{n=1}^M a_n - \sum_{n=1}^N a_n} = \abs{\sum_{n=N+1}^M a_n} \leq \sum_{n=N+1}^M |a_n| \leq \eps.
+</me>
+ This establishes the Cauchy property, as claimed.
+ </p>
+ <p>
+ To prove the infinite triangle inequality <xref ref="item-inf-tri"/> we first observe the finite triangle inequality
+<me>
+-\sum_{n=1}^N |a_n| \leq \sum_{n=1}^N a_n \leq \sum_{n=1}^N |a_n|
+</me>
+ The infinite triangle inequality follows on letting <m>N \to \infty</m> and applying  the inequality rule for limits (<xref ref="prop-ineq-rule"/>) to either side of the above.
+ </p>
+ </proof>
+ </proposition>
+					</solution>
+				</task>
+				</exercise>
+				<exercise>
+				<title>Adding and dilating series</title>
+					<statement>State and prove how infinite series respect both addition and scalar multiplication.
+					</statement>
+					<solution>
+						<proposition xml:id="prop-lin-series">
+							<title>Linearity of series</title>
+							<statement>
+ Suppose that the series <m>\displaystyle\sum_{n=1}^\infty a_n</m> and <m>\displaystyle\sum_{n=1}^\infty b_n</m> both converge. 
+ Let <m>\lambda, \mu \in \R</m>.
+ Then the  series <m>\displaystyle\sum_{n=1}^\infty (\lambda a_n + \mu b_n)</m> converges and satisfies the identity
+<me>
+\sum_{n=1}^\infty (\lambda a_n + \mu b_n) = \lambda \sum_{n=1}^\infty a_n + \mu \sum_{n=1}^\infty b_n.
+</me>
+</statement>
+<proof>
+This is an application of the addition and multiplication rules for sequences (<xref ref="prop-add-rule"/> and <xref ref="prop-mult-rule"/>), as follows:
+<md>
+<mrow>
+\sum_{n=1}^\infty (\lambda a_n + \mu b_n) \amp = \lim_{N \to \infty} \sum_{n=1}^N (\lambda a_n + \mu b_n)\qquad \text{[definition of series]}
+</mrow>
+<mrow>
+\amp = \lim_{N \to \infty}\brac{ \lambda {\sum_{n=1}^N a_n} + \mu{\sum_{n=1}^N b_n}}\qquad \text{[linearity of finite sums]}
+</mrow>
+<mrow>
+\amp =  \lim_{N \to \infty}\brac{ \lambda\sum_{n=1}^N a_n} + \lim_{N \to \infty}\brac{\mu\sum_{n=1}^N b_n} \qquad \text{[addition rule]}
+</mrow>
+<mrow>
+\amp = \lambda \lim_{N \to \infty}\sum_{n=1}^N a_n + \mu \lim_{N \to \infty}\sum_{n=1}^N b_n\qquad \text{[multiplication rule]}.
+</mrow>
+</md>
+</proof>
+</proposition>
+					</solution>
+</exercise>
+</subsection>
+<subsection>
+<title>Self-test questions for lecture 8</title>
+<exercise>
+<title>The comparison test</title>
+					<statement>State and prove the "comparison test" for convergence of infinite series.
+					</statement>
+					<solution>
+						<proposition xml:id="prop-oh-test">
+							<title>Comparison test</title>
+							<statement>
+ Let <m>(a_n)_{n=1}^\infty</m> and <m>(b_n)_{n=1}^\infty</m> be sequences of real numbers.
+ Suppose that there exists a constant <m>C</m> such that for all <m>n</m> we have <m>|a_n| \leq Cb_n</m>. If
+ <me>
+ \sum_{n=1}^\infty b_n  \lt  \infty.
+</me>
+ Then <m>\displaystyle \sum_{n=1}^\infty a_n</m> converges absolutely.
+ 							</statement>
+							<proof>
+							Notice that we must have <m>b_n \geq 0</m> for all <m>n</m>. Hence for any <m>N</m> we have
+<me>
+\sum_{n=1}^N |a_n| \leq \sum_{n=1}^N Cb_n \leq  C\sum_{n=1}^\infty b_n.
+</me>
+ Therefore the sequence of partial sums <m>\displaystyle \sum_{n=1}^N |a_n|</m> is an increasing sequence bounded above by the real number
+<m>\displaystyle C \sum_{n=1}^\infty b_n</m>. 
+ Hence, by the monotone convergence principle (<xref ref="prop-mono-lim"/>), the sequence of partial sums <m>\displaystyle \sum_{n=1}^N |a_n|</m> converges to a real number.
+ This proves absolute convergence (and hence convergence by <xref ref="prop-abs-conv"/>).
+</proof>
+</proposition>
+<example>
+<title>An example of applying the comparison test</title>
+We claim that
+<me>
+\sum_{n=1}^\infty \frac{100n}{3^n} \lt \infty.
+</me>
+To establish this we employ the comparison test (<xref ref="prop-oh-test"/>) with <m>a_n := \frac{100n}{3^n}</m>, <m>b_n := \brac{\frac{2}{3}}^n</m> and <m>C:= 50</m>, so that it suffices to establish the inequality
+<men xml:id="eq-comp-eg">
+\frac{100n}{3^n} \leq 50 \times \brac{\frac{2}{3}}^n \qquad (n \in \N).
+</men>
+To this end, we first observe that for <m>n\geq 1</m> we have
+<me>
+a_{n+1} = \frac{100(n+1)}{3^{n+1}} \leq \frac{100(n+n)}{3\times3^{n}} = \frac{2}{3}\times \frac{100n}{3^{n}} = \frac{2}{3} a_n.
+</me>
+It follows that for all <m>n</m> we have
+<me>
+a_n \leq \frac{2}{3} a_{n-1} \leq \brac{\frac{2}{3}}^2 a_{n-2} \leq \dots \leq 
+\brac{\frac{2}{3}}^{n-1} a_{1} = 50 \brac{\frac{2}{3}}^{n}.
+</me>
+The claimed inequality <xref ref="eq-comp-eg"/> follows.
+</example>
+					</solution>
+</exercise>
+<exercise>
+<title>Alternating series test</title>
+					<statement>State the "alternating series test" for convergence of infinite series (the proof is non-examinable).</statement>
+					<solution>
+					<proposition xml:id="prop-alt-test">
+						<title>Alternating series test</title>
+						<statement>
+ 						Let <m>(a_n)_n</m> denote a <em>decreasing</em> sequence of <em>non-negative</em> reals, so that <m>a_n \geq a_{n+1} \geq 0</m> for all <m>n</m>. Suppose that <m>a_n \to 0</m>. Then the series
+<me>
+a_1-a_2+a_3-a_4 + \dots = \sum_{n=1}^\infty (-1)^{n+1} a_n 
+</me>
+converges.
+						</statement>
+						</proposition>
+						<proof><title>Proof (NON-EXAMINABLE)</title>
+						<p>
+					Before proving the alternating series test, we prove the following key inequality, whose statement and proof are both NON-EXAMINABLE.
+					</p>
+					<lemma xml:id="lem-alt-ineq">
+						<statement>
+						For any decreasing sequence <m>b_1 \geq b_2 \geq \dots \geq b_n\geq 0</m> of non-negative reals, with finitely many terms, we have the inequalities
+							<men xml:id="eq-alt-key-ineq">
+							0 \leq b_1 - b_2 + \dots + (-1)^{n+1} b_n \leq b_1.
+							</men>
+						</statement>
+						<proof>
+						<title>Proof of <xref ref="lem-alt-ineq"/></title>
+ We prove this by induction on <m>n</m>, the number of terms in the sequence.
+ The basis case, when <m>n=1</m>, follows from the inequalities
+<me>
+0 \leq b_1 \leq b_1.
+</me> 
+ For the inductive step, we may suppose that
+<me>
+0 \leq b_2 -b_3 + \dots + (-1)^n b_{n} \leq b_2.
+</me>
+ It follows that
+<me>
+b_1 - b_2 + \dots + (-1)^{n+1} b_n = b_1- \brac{b_2 -b_3+ \dots + (-1)^{n} b_n} \geq b_1-b_2 \geq 0
+</me>
+and that
+<me>
+b_1 - b_2 + \dots + (-1)^{n+1} b_n = b_1- \brac{b_2 -b_3+ \dots + (-1)^{n} b_n} \leq b_1- 0= b_1.
+</me>
+</proof>
+</lemma>
+<proof><title>Proof of alternating series test (<xref ref="prop-alt-test"/>)</title>
+Applying the inequality <xref ref="eq-alt-key-ineq"/>, for any <m>N \gt M</m> we have
+<md>
+<mrow>
+\abs{\sum_{n=1}^N(-1)^{n+1} a_n -\sum_{n=1}^M(-1)^{n+1} a_n } \amp= \abs{ \sum_{n=M+1}^N (-1)^{n+1} a_n}
+</mrow>
+<mrow>
+ \amp = a_{M+1} - a_{M+2} + \dots + (-1)^{N-M+1} a_N
+ </mrow>
+<mrow>
+ \amp \leq a_{M+1}.
+ </mrow>
+</md>
+ Since <m>a_{n} \to 0</m> as <m>n \to \infty</m> there exists <m>N_0 = N_0(\eps)</m> such that for all <m>n \geq N_0(\eps)</m> we have <m>a_{n} \leq \eps</m>.
+ In particular, if <m>N \gt M \geq N_0(\eps)</m> then 
+<me>
+\abs{\sum_{n=1}^N(-1)^{n+1} a_n -\sum_{n=1}^M(-1)^{n+1} a_n  }  \leq a_{M+1} \leq \eps.
+</me>
+ It follows that the sequence of partial sums
+<me>
+\sum_{n=1}^N (-1)^{n+1} a_n
+</me>
+is a Cauchy sequence (<xref ref="def-cauchy"/>), hence convergent (see <xref ref="prop-cauchy"/>).
+</proof></proof>
+<example>
+<title>An example of applying the alternating series test</title>
+We claim that the series 
+<me>
+\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}
+</me>
+converges, even though it is not absolutely convergent.  To establish this we employ the alternating series test (<xref ref="prop-alt-test"/>) with <m>a_n := \frac{1}{n}</m>, so that it suffices to establish that the sequence <m>(a_n)_n</m> is non-negative, decreasing and converges to 0 (we leave proving this to the reader).
+</example>
+<example>
+<title>An example of an alternating series which converges, but whose terms are not decreasing in absolute value</title>
+Consider the sequence
+<me>
+a_n := \begin{cases} 2^{-n} \amp \text{if } n \text{ odd};\\
+				3^{-n} \amp \text{if } n \text{ even}. \end{cases}
+</me>
+Then the sequence <m>(a_n)_{n=1}^\infty</m> is <em>not</em> decreasing, yet the corresponding alternating series converges, since by addition of convergent series (<xref ref="prop-lin-series"/>) we have
+<me>
+\sum_{n=1}^\infty (-1)^{n+1} a_n = \sum_{m=1}^\infty 2^{-(2m-1)} - \sum_{m=1}^\infty 3^{2m} = \frac{2}{3}-\frac{1}{8}.
+</me>
+</example>
+</solution>				
+				</exercise>
+				<exercise>
+				<title><m>n</m>th term test</title>
+					<statement>State and prove the "<m>n</m>th term test" for non-convergence of infinite series.
+					</statement>
+					<solution>
+						<proposition xml:id="prop-tail">
+							<title><m>n</m>th term test</title>
+							<statement>
+ Suppose that the sequence <m>(a_n)_n</m> does not tend to zero, written <m>a_n \not\to 0</m> (or equivalently <m>|a_n| \not\to 0</m>). 
+ Then the series <m>\displaystyle \sum_{n=1}^\infty a_n</m> does not converge.
+ 							</statement>
+							<proof>
+							We prove the <url href="https://en.wikipedia.org/wiki/Contraposition" visual="en.wikipedia.org/wiki/Contraposition">contrapositive</url>. To this end, suppose that <m>\displaystyle \sum_{n=1}^\infty a_n</m> converges to a real number.
+ Then by <xref ref="prop-cauchy"/>, the sequence of partial sums
+<me>
+\brac{\sum_{n=1}^{N} a_n}_{N=1}^\infty
+</me>
+is a Cauchy sequence.
+ Hence for any <m>\eps \gt 0</m> there exists <m>N_0 = N_0(\eps)</m> such that for all <m>N, M\geq N_0(\eps)</m> we have
+<me>
+\abs{\sum_{n=1}^M a_n - \sum_{n=1}^N a_n} \leq \eps.
+</me>
+ In particular, if <m>N-1 \geq N_0(\eps)</m> then we have
+<me>
+\abs{\sum_{n=1}^N a_n - \sum_{n=1}^{N-1} a_n}\leq \eps.
+</me>
+ It follows that <m>a_N \to 0</m> according to <xref ref="def-seq-limit"/>.
+							</proof>
+							</proposition>
+ 
+					</solution>
+				</exercise>
+<!--				
+	<exercise>
+		<title>Rearranging series</title>
+		<task>
+		<title>Rearranging single series</title>
+		<statement>
+		State how absolutely convergent series can be rearranged without affecting their value (the proof is non-examinable).
+		</statement>
+		<solution>
+			<theorem xml:id="thm-re-arrange">
+				<title>Absolute convergence implies re-arrangement invariant</title>
+				<statement>
+					Let <m>\displaystyle \sum_{n=1}^\infty a_n</m> be an <em>absolutely</em> convergent series. Let <m>\sigma : \N \to \N</m> be a bijection. Then <m>\displaystyle \sum_{n=1}^\infty a_{\sigma(n)}</m> is absolutely convergent and
+<men xml:id="eq-re-arrange-id">
+\sum_{n=1}^\infty a_{\sigma(n)} = \sum_{n=1}^\infty a_{n}.
+</men>
+</statement>
+				<proof>
+					<title>Proof (NON-EXAMINABLE)</title>
+ Let us first prove <xref ref="eq-re-arrange-id"/>, and later deduce absolute convergence of the re-arranged series.
+ We would like to show that the partial sums <m>\displaystyle \sum_{n=1}^N a_{\sigma(n)}</m> converge to <m>\displaystyle \sum_{n=1}^\infty a_n</m>.
+ By linearity of series (<xref ref="prop-lin-series"/>) we have
+<men xml:id="eq-re-arrange-eps">
+\sum_{n=1}^\infty a_n- \sum_{n=1}^N a_{\sigma(n)} = \sum_{\substack{n=1\\ n\neq \sigma(1),\dots, \sigma(N)}}^\infty a_n.
+</men>
+ The idea is to show that
+<men xml:id="eq-M-inc">
+(\forall M \in \N) (\exists N_0 \in \N)(\forall N \geq N_0)\bigsqbrac{
+\set{1,2,\dots, M} \subset \set{\sigma(1), \dots ,\sigma(N)}}.
+</men>
+If this holds, then combining <xref ref="eq-re-arrange-eps"/> and <xref ref="eq-M-inc"/>, together with the infinite triangle inequality (<xref ref="prop-abs-conv"/>), we deduce that for all <m>N \geq N_0</m> we have 
+<me>
+\abs{\sum_{n=1}^\infty a_n- \sum_{n=1}^N a_{\sigma(n)}} \leq \sum_{n=M}^\infty |a_n|,% \quad \to 0 \quad \text{ as } \quad M \to \infty.
+</me>
+and we can make the latter arbitrarily small by taking <m>M</m> large.
+ To make this idea rigorous, we first prove <xref ref="eq-M-inc"/>.
+ Since <m>\sigma : \N\to \N</m> is a bijection, we may take its inverse, so set
+<me>
+N_0 = N_0(M) := \max\set{\sigma^{-1}(1), \dots, \sigma^{-1}(M)}.
+</me>
+ If <m>1 \leq m \leq M</m> then <m>m = \sigma(\sigma^{-1}(m))</m> with <m>\sigma^{-1}(m) \in \set{1,\dots, N_0}</m>.
+ Hence 
+<me>
+\set{1, \dots,M} \subset \set{\sigma(1), \dots, \sigma(N_0)} ,
+</me>
+which proves <xref ref="eq-M-inc"/>.
+ Next let us use <xref ref="eq-M-inc"/> to show that <m> \sum_{n=1}^N a_{\sigma(n)}</m> converges to <m> \sum_{n=1}^\infty a_n</m>. 
+ Since <m>\sum_{n=1}^\infty |a_n| \lt \infty</m>, for any <m>\eps \gt 0</m> there exists <m>M = M(\eps)</m> such that 
+<me>
+ \sum_{n=M}^\infty |a_n| = \abs{\sum_{n=1}^\infty |a_n| - \sum_{n=1}^{M-1} |a_n|} \leq \eps.
+</me>
+ Using <xref ref="eq-re-arrange-eps"/> and <xref ref="eq-M-inc"/>, for <m>N \geq N_0(M)</m> we deduce that
+<me>
+\abs{\sum_{n=1}^\infty a_n - \sum_{n=1}^N a_{\sigma(n)}} \leq \sum_{\substack{n=1\\ n\neq \sigma(1),\dots, \sigma(N)}}^\infty |a_n| \leq \sum_{n=M}^\infty |a_{n}| \leq \eps.
+</me>
+ Since <m>\eps > 0</m> is arbitrary, we deduce <xref ref="eq-re-arrange-id"/>.
+ Absolute convergence of the re-arranged series follows by applying <xref ref="eq-re-arrange-id"/> to the sequence <m>(|a_n|)_{n=1}^\infty</m>, to yield
+<me>
+\sum_{n=1}^\infty |a_{\sigma(n)}| = \sum_{n=1}^\infty |a_n| \lt \infty.
+</me>
+				</proof>
+			</theorem>
+		</solution>
+		</task>
+		<task>
+		<title>Rearranging double series</title>
+		<statement>
+		State how the order of summation can be interchanged if a double series is absolutely convergent (the proof is non-examinable).
+		</statement>
+		<solution>
+			<theorem xml:id="thm-re-arrange-double">
+				<title>Changing the order of summation</title>
+				<statement>
+					For each pair <m>i,j\in \N \cup \set{0}</m> let <m>a_{ij}</m> denote a real number. Suppose that <m>\displaystyle \sum_{i=0}^\infty\sum_{j=0}^\infty |a_{ij}|\lt \infty</m>. Then
+<men xml:id="eq-re-arrange-dbl">
+\sum_{i=0}^\infty\brac{\sum_{j=0}^\infty a_{ij}} = \sum_{j=0}^\infty\brac{\sum_{i=0}^\infty a_{ij}} = \sum_{n = 0}^\infty \brac{\sum_{i+j=n} a_{ij}}
+</men>.
+</statement>
+				<proof>
+					<title>Proof (NON-EXAMINABLE)</title>
+				</proof>
+			</theorem>
+		</solution>
+		</task>
+	</exercise>
+-->
+</subsection>
+</section>

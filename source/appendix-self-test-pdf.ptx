@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!--
+% !TEX TS-program = PreTeXt-HTML
+-->
+<appendix xml:id="pdf-link">
+				<title>Questions in pdf format</title>
+				<p>	
+				<url href="https://bit.ly/3F0Hz8o" visual="bit.ly/3F0Hz8o">Alternative pdf of these questions</url>
+				</p>
+</appendix>

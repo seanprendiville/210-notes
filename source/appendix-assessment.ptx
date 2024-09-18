@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!--
+% !TEX TS-program = PreTeXt-HTML
+-->
+<appendix xml:id="assessment">
+			<title>Assessment</title>
+			<ul>
+			<li> <p><em>Summer Examination</em>. Worth <m>70\%</m> of your final mark. All examination questions are variants of self-test questions.</p>
+				<ul>
+				<li> Some questions ask you to "define" a piece of terminology from the self-test questions.
+				</li>
+				<li>
+				Some questions ask you to "state" or "state and prove" a theorem/proposition/lemma from the self-test questions.
+				</li>
+				<li>
+				Some questions ask you whether a statement is true or false, with the majority of the marks being awarded for justifying your answer with a (brief) proof or counterexample.
+				</li>
+				<li>
+				You may be given statements to prove which are similar but not identical to those in the self-test questions. In order to be able to answer these questions, you need to be familiar with how to construct proofs in real analysis, using the definitions covered in the self-test questions.
+				</li>
+				</ul>
+			</li>
+			<li> <p><em>Participation in Workshops</em>. Worth <m>30\%</m> of your final mark. Workshops take place every fortnight, in odd-numbered weeks (see your timetable for details of where and when). Each workshop therefore counts towards <m>6\%</m> of your final mark. Your mark for each workshop is scored out of 3. You will receive 1 mark for each of the following:
+			</p>
+				<ul>
+				<li>
+				<p>
+				<em>Group mark</em>. Your tutor will assign all members of your group 1 mark if your group:
+				</p>
+					<ul>
+					<li> writes up an answer to the self-test question assigned by your tutor for the group activity;
+					</li>
+					<li>
+					provides a mark and feedback to another group.
+					</li>
+					</ul>
+				</li>
+				<li> <em>Individual mark</em>.  This assesses your participation in the group activities and the true/false quiz. Your tutor will assign you 1 mark if you demonstrate your ability to discuss new mathematical ideas with your peers or tutors.
+				</li>
+				<li> <em>Mark for self-test submission</em>. Your tutor will assign you 1 mark if you submit a reasonable attempt at the exam-style self-test question which your tutor asks you to complete at the end of the workshop. If you are unable to answer this question, you will still receive 1 mark if your submission clearly explains the unsuccessful strategies you have attempted. You will not receive a mark if you do not attempt the question and do not explain the strategies attempted.
+				</li>
+				</ul>
+			</li>
+			</ul>
+       		</appendix>

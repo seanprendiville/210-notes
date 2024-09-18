@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!--
+% !TEX TS-program = PreTeXt-HTML
+-->
+<appendix xml:id="study-instructions">
+				<title>How to study this module</title>
+				<p>
+				Each week  you are expected to work through the corresponding <em>self-test questions</em>. These questions cover material covered in the week's lectures, almost all of which you should have seen in previous modules. The self-test questions are designed to allow you to actively learn the material by writing it up  yourself.
+				</p>
+				<p>
+				<em>Material is examinable if and only if it is covered in lectures.</em>
+				</p>
+				<p>
+				I believe it is more beneficial to your learning to <em>write</em> out answers to self-test questions, rather than reading lecture notes. Here are some reasons why I believe this:
+				<ul>
+					<li>
+					You have seen the majority of this material before, in MATH111-114. Sometimes our definitions will differ from those given in MATH111-114, see for instance our definition of "upper Riemann integral" <!--(<xref ref="def-up-low-riemann-integral"/>).--> This often happens in mathematics<fn>For instance, do the natural numbers <m>\N</m> contain 0? In this course, they do <em>not</em>, we take <m>\N:=\set{1,2,3,\dots}</m>, the set of positive integers. However, in other courses/books you may see 0 included as a natural number.</fn>; no confusion should arise provided that one is consistent. In this course, the examinable definition is that given in the solutions to the self-test questions.
+					</li>
+					<li>
+					Mathematics is <em>hard</em> to read and to listen to. It is much more fun to write-up mathematics oneself, as this active process is closer to the puzzle-solving which draws many of us to the subject.
+					</li>
+					<li>
+					Evidence from educational psychology suggests that we understand and remember material more effectively if we first <em>get it wrong</em>. That is to say, we obtain better learning outcomes if we attempt a question, get it wrong, look up the solution, then write-up a correct answer.
+					</li>
+				</ul>
+				</p>
+	<p>
+	Here is how I suggest that you work through the self-test questions:
+	<ul>
+		<li>
+	 Attempt the self-test questions in the order in which they are presented. Almost immediately, it is likely that you will  find yourself unsure about what you are writing. That is okay! For example, if trying to define a uniformly continuous function <!--(<xref ref="ex-unif-cts"/>)-->, you may begin:
+	<blockquote>
+	We say that <m>f</m> is uniformly continuous if <m>(\forall \eps > 0)\dots</m> ??
+	</blockquote>	
+	As you are writing this, some questions may occur to you: What should the domain of <m>f</m> be? What about the co-domain? What comes after <m>(\forall \eps >0)</m>? Is it <m>(\exists \delta > 0)</m> or is it <m>(\forall x,y\dots)</m>?
+	</li>
+	<li> As soon as you are stuck, you should look at the solution, reading until your query is answered.
+	</li>
+	<li> Once your query is answered, cover up the solution and resume answering the self-test question. It is likely that you will shortly find yourself stuck once more. That is okay - simply repeat the above procedure!
+	</li>
+	<li> Proceeding in this manner, one ends up reading the notes (which are in effect, the solutions to the questions) in detail, but when one does engage with the details, one is primed to understand and remember them.
+	</li>
+	</ul>
+	You may choose to copy down what I write on the board in lectures, in order to compile your own booklet of "examinable lecture notes"<!--<fn>As an undergraduate, I rarely understood the mathematics in presentation-style lectures. My main reason in attending such lectures was to write down the notes from the board, so that I could go away and try and understand them in my own time. There is conflicting evidence on whether copying down notes from the board is an effective strategy.</fn>-->.
+	</p>
+			<section xml:id="thoughts-on-learning">
+			<title>Some thoughts on learning mathematics</title>
+<p><em>Reading versus writing:</em>
+When reading mathematics, do not try to understand every line.  To try and follow  all the details is hard and is not engaging. Mathematics is something you construct, like writing code, baking a cake or solving a puzzle; it is hard to passively follow someone else doing it.
+</p>
+<p>
+It is better to get a sense of what is being discussed in the solutions, then challenge yourself to write-up the precise mathematics yourself. You will almost always have to immediately consult the solution again. However, when you read mathematics <em>after</em> trying to write it yourself,  you are far more primed to engage with the details. It is like reading the solution to a problem you are stuck on - you really see what you were missing if you have tried the problem first.  Often one  reads until one spots the information previously missed or misunderstood, then has another attempt at writing-up. 
+</p>
+<p>
+This way of proceeding appears more time consuming than believing that your reading is complete once your eyes have passed over each word/symbol. However in my experience, writing  mathematics yourself is far more fun, and beneficial to your understanding, than trying to decode what someone else has written.  View the solutions as a set of prompts, which one can use to check the validity of your own write-up.
+</p>
+<p>
+<em>Memorisation versus reconstruction:</em> One can memorise every proof in this course for the purpose of the exam, however this is not a good idea for the following reasons:
+	<ul>
+		<li> We have limited memory, and it is therefore very hard to memorise such a large amount of information<fn>I do not know any of the proofs in this course from memory.</fn>.
+		</li>
+		<li>Mathematicians are lazy - most of us do not like memorising large amounts of material. Successful mathematicians learn a few strategies which allow them to reconstruct  proofs from first principles. On occasion one has to memorise a key "trick" or "idea", which it may be hard to think of yourself (particularly under exam conditions). However, memorising a handful of key "tricks" is much easier than memorising 100 pages of notes.</li>
+		<li>Our intended learning outcomes (see <xref ref="module-purpose"/>) of "writing proofs" and "constructing counterexamples" are not met through memorisation. These learning outcomes are  skills which can be acquired, and are useful in other situations, in mathematics and beyond.</li>
+	<li> In your assessment, you will be given statements to prove which are similar but not identical to those in the notes. Understanding how to construct a proof allows you to answer these questions, whereas memorising the proofs in the notes does not.</li>
+</ul>
+</p>
+</section>
+        		</appendix>

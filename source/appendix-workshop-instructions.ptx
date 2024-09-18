@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!--
+% !TEX TS-program = PreTeXt-HTML
+-->
+<appendix xml:id="workshop-instructions">
+	<title>Workshop instructions</title>
+	<p>
+	Workshops take place every fortnight, in odd-numbered weeks (see your timetable for details of where and when). Each workshop lasts up to two hours.
+	</p>
+	<ul>
+		<li> 
+			<em>0-30 minutes:</em> During the first 30 minutes of your workshop, your tutor will facilitate a true/false quiz reviewing material covered in the previous fortnight. The questions will be selected by your tutor from those listed (for Week 1) here <xref ref="week-1-true-false"/>. You will vote on whether you think a statement is true (thumbs up) or false (thumbs down). For each question, your workshop tutor will select one or two of you to  justify your vote. This justification can involve giving a counterexample (if false) or outlining which definition/theorem you think the statement follows from (if true). Your participation in this activity will go towards your "individual mark" for the workshop (see <xref ref="assessment"/>).
+		</li>
+		<li>
+			<em>30-60 minutes:</em> During the next 30 minutes of the workshop, you will break into groups in order to collaboratively write-up an answer to an exam-style self-test question. You will be given marker pens and a large sheet of A1 paper on which to do this.  Your participation in this activity will go towards both your "individual mark" and "group mark" for the workshop (see <xref ref="assessment"/>). The question (for Week 1) will be selected from those listed here: <xref ref="exam-style-week-1-1"/>, <xref ref="exam-style-week-1-2"/> and <xref ref="exam-style-week-1-3"/>. During this group activity, you are free to consult your notes, the self-test questions and any other resources you find useful.
+ 		</li>
+ 		<li>
+ 			<em>60 minutes:</em> Comfort break.
+ 		</li>
+  		<li>
+ 			<em>60-90 minutes:</em> On the whiteboard, your tutor will outline a model solution to the question you have attempted in your group. Your group will mark the work of another group, indicating any mistakes/gaps, and giving them an indicative grade (see below). Your participation in this activity will go towards both your "individual mark" and "group mark" for the workshop (see <xref ref="assessment"/>).
+ 		</li>
+   		<li>
+   			<p>
+ 				<em>90-120 minutes:</em> Your tutor will select one of the remaining two exam-style self-test questions and you will write-up a solution under exam conditions. The purpose of this is for you to receive  feedback on how to improve your answers in real analysis.
+ 			</p>
+ 			<ul>
+ 				<li>The question should take you at most 20 minutes - the extra   time is  for those who require this in exams. However, everyone should feel free to use the extra time if needed.</li>
+				<li>You may not consult anyone else during the final 30 minutes.	
+				</li>
+				<li>You must include full details of your proofs and calculations. 
+				</li>
+				<li>The only results which you may use without further justification are those contained in the notes or other course materials, provided that you clearly paraphrase them.
+				</li>
+				<li>Once you are finished, you should hand your attempt to your workshop tutor and leave quietly.
+				</li>
+				<li>Please include your name on your submission.
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>
+	Each workshop contributes <m>6\%</m> towards your final mark. Your mark for each workshop is scored out of 3. You will receive 1 mark for each of the following:
+	</p>
+	<ul>
+		<li>
+			<p>
+				<em>Group mark</em>. Your tutor will assign all members of your group 1 mark if your group:
+			</p>
+			<ul>
+				<li> writes up an answer to the self-test question assigned by your tutor for the group activity;
+				</li>
+				<li>
+				provides feedback and an indicative grade to another group.
+				</li>
+			</ul>
+		</li>
+		<li> 
+			<em>Individual mark</em>.  This assesses your participation in the group activities and the true/false quiz. Your tutor will assign you 1 mark if you demonstrate your ability to discuss new mathematical ideas with your peers or tutors.
+		</li>
+		<li> 
+			<p>
+				<em>Mark for self-test submission</em>. Your tutor will assign you 1 mark if you submit a reasonable attempt at the exam-style self-test question which your tutor asks you to complete at the end of the workshop. If you are unable to answer this question, you will still receive 1 mark if your submission clearly explains the unsuccessful strategies you have attempted. You will not receive a mark if you do not attempt the question and do not explain the strategies attempted.
+			</p>
+			<ul>
+				<li> At your next workshop, your tutor will return your answer with formative feedback.
+				</li>
+				<li> 
+					<p>To help you get a sense of what your answer would achieve in an exam, your workshop tutor will also give you an <em>indicative grade</em>:
+					</p>
+					<ul>
+						<li> 
+						<em>1st.</em> Complete solution with no gaps or logical errors.
+						</li>
+						<li> <em>2nd.</em> Almost complete solution, with a small number of gaps or logical errors
+						</li>
+						<li> <em>3rd.</em> Answer demonstrates some of the relevant knowledge required for a solution.
+						</li>
+						<li> <em>4th.</em> Answer does not demonstrate any of the relevant knowledge required for a solution.
+						</li>
+					</ul>
+				</li>
+				<li> The indicative grade will not count towards your final mark.
+				</li>
+				<li> Do not attend a workshop if you feel ill or are self-isolating. Email the <url href="mailto:mathsteaching@lancaster.ac.uk" visual="mathsteaching@lancaster.ac.uk">teaching office</url> to report your absence. 
+				</li>
+			</ul>
+		</li>
+	</ul>
+</appendix>

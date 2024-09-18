@@ -1,0 +1,717 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!--
+% !TEX TS-program = PreTeXt-HTML
+-->
+<section xml:id="week-7" xmlns:xi="http://www.w3.org/2001/XInclude">
+			<title>Week 7</title>
+	<subsection>
+	<title>Self-test questions for lecture 13</title>
+			<exercise>
+				<title>Differentiability</title>
+					<statement>
+					Define what it means for a real-valued function on an open interval to be <em>differentiable</em> at a point and define the <em>derivative</em> at that point. State what it means for such a function to be differentiable.
+					</statement>
+					<solution>
+					<definition xml:id="def-differentiable">
+<title>Differentiable</title>
+					<p>
+					Let <m>f : (a,b)\to \R</m> and <m>x_0 \in (a,b)</m>. We say that <m>f</m> is <em>differentiable</em> at <m>x_0</m> if there exists <m>y_0 \in \R</m> such that
+					<me>
+					\frac{f(x)-f(x_0)}{x-x_0} \to y_0 \quad \text{as}\quad x\to x_0 \quad \text{through} \quad (a,b)\setminus\set{x_0}.
+					</me>
+					</p>
+					<p>
+	Should such a value of <m>y_0</m> exist, one can check that it is unique, and we call it the <em>derivative</em> of <m>f</m> at <m>x_0</m>, denoted <m>f'(x_0)</m>.
+					</p>
+					<p>
+					We say that <m> f : (a,b)\to \R</m> is <em>differentiable</em> if it is differentiable at every point <m>x_0 \in (a,b)</m>.
+					</p>
+	</definition>
+	<example xml:id="eg-const-diff">
+<title>Constant functions are differentiable</title>
+ Let <m>f : (a,b) \to \R</m>.
+ Suppose that <m>f</m> is constant.
+ In other words, there exists <m>c \in \R</m> such that for all <m>x \in (a,b)</m> we have <m>f(x) = c</m>.
+ Then for <m>x \in (a,b)\setminus\set{x_0}</m> we have
+<me>
+\frac{f(x)-f(x_0)}{x-x_0} = \frac{c-c}{x-x_0} = 0 \to 0 \quad \text{as} \quad x \to x_0\quad\text{through}\quad (a,b)\setminus\set{x_0}.
+</me> 
+ Hence <m>f</m> is differentiable on <m>(a,b)</m>.
+ Moreover <m>f' = 0</m> on <m>(a,b)</m>.
+</example>
+
+<example xml:id="eg-id-diff">
+<title>The identity function is differentiable</title>
+ Let <m>f : (a,b) \to \R</m> be given by <m>f(x):=x</m> for all <m>x \in (a,b)</m>.
+ Then for <m>x_0 \in (a,b)</m> and <m>x\in(a,b)\setminus\set{ x_0}</m> we have
+<me>
+\frac{f(x)-f(x_0)}{x-x_0} = \frac{x-x_0}{x-x_0} = 1 \to 1 \quad \text{as} \quad x \to x_0\quad\text{through}\quad (a,b)\setminus\set{x_0}.
+</me> 
+ Hence <m>f</m> is differentiable on <m>(a,b)</m>.
+ Moreover <m>f' =1</m> on <m>(a,b)</m>.
+</example>
+<example xml:id="eg-recip-diff">
+<title>The reciprocal function is differentiable</title>
+ Let <m>f : (0,\infty) \to \R</m> be given by <m>f(x):=1/x</m> for all <m>x \in (0,\infty)</m>.
+ Then for <m>x_0 \in (0,\infty)</m> and <m>x\in(0,\infty)\setminus\set{ x_0}</m> we have
+<me>
+\frac{f(x)-f(x_0)}{x-x_0} = \frac{\recip{x}-\recip{x_0}}{x-x_0} =  -\recip{xx_0}  \to -\recip{x_0^2} \quad \text{as} \quad x \to x_0\quad\text{through}\quad (0,\infty)\setminus\set{x_0}.
+</me> 
+ Hence <m>f</m> is differentiable on <m>(0, \infty)</m>.
+ Moreover <m>f'(x) =-1/x^2</m> on <m>(0, \infty)</m>. One can also check that <m>1/x</m> is differentiable on <m>(-\infty, 0)</m> with derivative <m>-1/x^2</m>.
+</example>				
+</solution>
+				</exercise>
+				<exercise>
+				<title>Differentiable implies continuous</title>
+					<statement>
+					State and prove how a function which is differentiable at a point is continuous at that point.
+					</statement>
+					<solution>
+					<proposition xml:id="prop-diff-cts">
+<title>Differentiable implies continuous</title>
+<statement>
+ Let <m>f : (a,b) \to \R</m> be differentiable at <m>x_0 \in (a,b)</m>.
+ Then <m>f</m> is continuous at <m>x_0</m>.
+</statement>
+<proof>
+By the epsilon-delta characterisation of a finite limit at a finite point (see <xref ref="cor-eps-delta-cts"/>) we are required to verify that
+<mdn>
+<mrow number="no">
+(\forall \eps \gt 0)(\exists \delta_1 \amp= \delta_1(x_0,\eps) \gt 0)(\forall x \in (a,b))
+</mrow>
+<mrow xml:id="eq-cts-to-verify">
+\amp \bigsqbrac{\ |x-x_0| \leq \delta_1 \implies |f(x)-f(x_0)| \leq \eps\ }.
+</mrow>
+</mdn>
+By the definition of differentiability (see <xref ref="def-differentiable"/>) we know that 
+<md>
+<mrow>
+(\forall \eps \gt 0)\amp(\exists \delta_2 = \delta_2(x_0,\eps) \gt 0) (\forall x \in (a,b))
+</mrow>
+<mrow>
+\amp \sqbrac{\ 0\lt |x-x_0| \leq \delta_2 \implies \abs{\frac{f(x)-f(x_0)}{x-x_0}-f'(x_0)} \leq \eps\ }.
+</mrow>
+</md>
+ In particular, if <m>x \in (a,b) </m> and <m>0\lt|x-x_0| \leq \delta_2</m> then
+<me>
+\abs{f(x)-f(x_0)} \leq \eps \abs{x-x_0} + \abs{f'(x_0)}|x-x_0|.
+</me>
+  We therefore obtain <xref ref="eq-cts-to-verify"/> on taking 
+<me>
+\delta_1(x_0,\eps) := \min\set{\delta_2(x_0,\eps),\frac{\eps}{\eps+\abs{f'(x_0)}}}.
+</me>
+</proof>
+</proposition>
+<example xml:id="abs-not-diff">
+					<title>A continuous function which is not differentiable</title>
+ The function <m>x \mapsto |x|</m>  is an example of a function which is continuous at a point, but not differentiable there (namely at <m>x_0 = 0</m>). Hence continuity does not imply differentiability. To see that this function is not differentiable at <m>x_0=0</m>, consider the sequences <m>(1/n)_{n=1}^\infty</m> and <m>(-1/n)_{n=1}^\infty</m>. Both are sequences in the set <m>\R\setminus\set{0}</m> and both converge to 0, yet
+ <me>
+ \frac{|1/n|-|0|}{(1/n)-0} = 1 \to 1 \quad\text{as}\quad n \to \infty
+ </me>
+ whilst
+  <me>
+ \frac{|-1/n|-|0|}{(-1/n)-0} = -1 \to 1 \quad\text{as}\quad n \to \infty
+ </me>.
+ It follows that <m>x \mapsto |x|</m> does not satisfy the definition (<xref ref="def-differentiable"/>) of being differentiable at <m>x_0 = 0</m>, since if <m>y_0</m> were the derivative then we get the contradiction that <m>-1 = y_0= 1</m>.
+ </example>	
+					</solution>
+</exercise>				
+			<exercise xml:id="ex-alg-diff">
+				<title>Addition and product rules</title>
+					<statement>
+					State and prove both the addition and product rules for differentiation.
+					</statement>
+					<solution>
+					<proposition xml:id="prop-alg-diff">
+<title>Algebra of differentiation</title>
+<statement>
+ Let <m>f,g: (a,b)\to \R</m> be differentiable at <m>x_0 \in (a,b)</m>.
+ Then the sum <m>f+g</m> and product <m>f\cdot g</m> are both differentiable at <m>x_0</m>.
+ Moreover, their derivatives satisfy the identities
+<md>
+<mrow>
+	(f+g)'(x_0) \amp = f'(x_0) + g'(x_0), \amp \text{(addition rule)}
+</mrow>
+<mrow>
+	(f\cdot g)'(x_0) \amp = f'(x_0)g(x_0) + f(x_0)g'(x_0).\amp \text{(product rule)}
+	</mrow>
+</md>
+</statement>
+<proof>
+ Let <m>(a_n)_n</m> be a sequence in <m>(a,b)\setminus\set{x_0}</m> with <m>a_n \to x_0</m>. Then the addition rule follows from the addition rule for sequence limits, since 
+ <md>
+ <mrow>
+\lim_{n \to \infty} \amp \frac{(f+g)(a_n)-(f+g)(x_0)}{a_n-x_0}
+</mrow>
+<mrow>
+\amp = \lim_{n\to \infty} \frac{f(a_n)-f(x_0)}{a_n-x_0}+ \lim_{n \to \infty} \frac{g(a_n)-g(x_0)}{x-x_0}.
+</mrow>
+</md>
+ For the product rule, we can use the identity
+ <md>
+ <mrow>
+ \amp f(a_n)g(a_n) - f(x_0)g(x_0)  = \sqbrac{f(a_n)-f(x_0)}g(a_n) + f(x_0)\sqbrac{g(a_n)-g(x_0)}
+ </mrow>
+ <mrow>
+\amp =\sqbrac{f(a_n)-f(x_0)}\sqbrac{g(a_n)-g(x_0)} + \sqbrac{f(a_n)-f(x_0)}g(x_0)
+</mrow>
+<mrow>
+\amp + f(x_0)\sqbrac{g(a_n)-g(x_0)}
+</mrow>
+</md>
+ By the multiplication rule for sequence limits (<xref ref="prop-mult-rule"/>), we have
+<md alignment="gather">
+<mrow>
+\lim_{n \to \infty}\frac{\sqbrac{f(a_n)-f(x_0)}g(x_0)}{a_n-x_0} = f'(x_0)g(x_0),
+</mrow>
+<mrow>
+\lim_{n \to \infty}\frac{f(x_0)\sqbrac{g(a_n)-g(x_0)}}{a_n-x_0} = f(x_0)g'(x_0).
+</mrow>
+</md>
+ Similarly
+<md>
+<mrow>
+\amp \lim_{n\to\infty}\frac{\sqbrac{f(a_n)-f(x_0)}\sqbrac{g(a_n)-g(x_0)}}{a_n-x_0}
+</mrow>
+<mrow>
+\amp = \lim_{n\to\infty}\frac{\sqbrac{f(a_n)-f(x_0)}}{a_n-x_0}\lim_{n\to\infty}\frac{\sqbrac{g(a_n)-g(x_0)}}{a_n-x_0}\lim_{n\to\infty}(a_n-x_0)
+</mrow>
+<mrow>
+\amp = f'(x_0)\cdot g'(x_0)\cdot 0 = 0.
+</mrow>
+</md>
+</proof>
+</proposition>
+					</solution>
+				</exercise>
+			</subsection>
+			<subsection>
+				<title>Self-test questions for lecture 14</title>
+				<exercise>
+				<title>Chain rule</title>
+					<statement>
+					State the chain rule for differentiation and prove it in the situation in which the innermost function is injective (the general case is non-examinable).
+					</statement>
+					<solution>
+					<theorem xml:id="thm-chain-rule">
+<title>Chain rule</title>
+<statement>
+ Let <m>f : (a,b) \to (c,d)</m> and <m>g:  (c,d) \to \R</m>.
+ Suppose that <m>f</m> is differentiable at <m>x_0</m> and that <m>g</m> is differentiable at <m> f(x_0)</m>.
+ Then the composition <m>g\circ f</m> is differentiable at <m>x_0</m>.
+ Moreover the derivative satisfies the identity
+<me>
+(g\circ f)'(x_0) = g'\bigbrac{f(x_0)} \cdot f'(x_0).
+</me>
+</statement>
+<proof>
+<title>Proof in the case that <m>f</m> is injective</title>
+Let <m>(a_n)_{n=1}^\infty</m> be a sequence in <m>(a,b) \setminus\set{x_0}</m> with <m>a_n \to x_0</m>.
+ We wish to prove that
+<me>
+\lim_{n\to \infty} \frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{a_n-x_0} = g'\bigbrac{f(x_0)}f'(x_0).
+</me>
+Since <m>f</m> is injective, we have that <m>f(a_n) - f(x_0)\neq 0</m> for all <m>n</m>. Therefore
+<me>
+\frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{a_n-x_0} = \frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{f(a_n)-f(x_0)}\cdot \frac{f(a_n)-f(x_0)}{a_n-x_0} . 
+</me>
+ Since differentiability implies continuity (<xref ref="prop-diff-cts"/>), we have 
+<me>
+\lim_{n \to \infty} f(a_n) = f(x_0).
+</me>
+ Thus, since <m>g</m> is differentiable at <m>f(x_0)</m>, we have
+<me>
+\lim_{n\to \infty} \frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{f(a_n)-f(x_0)} = g'\bigbrac{f(x_0)}.
+</me>
+ We may therefore use the multiplication rule for sequential limits (<xref ref="prop-mult-rule"/>) to deduce that 
+<md>
+<mrow>
+\lim_{n \to \infty} \frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{a_n-x_0} \amp = \lim_{n\to\infty}\brac{ \frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{f(a_n)-f(x_0)}\cdot \frac{f(a_n)-f(x_0)}{a_n-x_0}}
+</mrow>
+<mrow>
+\amp = \lim_{n\to\infty}\frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{f(a_n)-f(x_0)}\lim_{n\to \infty} \frac{f(a_n)-f(x_0)}{a_n-x_0}
+</mrow>
+<mrow>
+\amp = g'\bigbrac{f(x_0)}f'(x_0).
+</mrow>
+</md>
+</proof>
+<proof>
+<title>Proof of the general case (non-examinable)</title>
+ Let <m>(a_n)_{n=1}^\infty</m> be a sequence in <m>(a,b) \setminus\set{x_0}</m> with <m>a_n \to x_0</m>.
+ We wish to prove that
+<men xml:id="eq-chain-to-prove">
+\lim_{n\to \infty} \frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{a_n-x_0} = g'\bigbrac{f(x_0)}f'(x_0).
+</men>
+ We have
+<men xml:id="eq-chain-alt">
+\frac{g\bigbrac{f( a_n)} - g\bigbrac{f(x_0)}}{ a_n-x_0} = 
+\begin{cases}
+0, \amp \text{if } f( a_n) = f(x_0);\\
+\frac{g\brac{f( a_n)}-g\brac{f(x_0)}}{f( a_n)-f(x_0)}\cdot \frac{f( a_n)-f(x_0)}{ a_n-x_0}, \amp \text{otherwise.}
+\end{cases}
+</men> 
+<p>
+First, let us suppose that <m>f(a_n) = f(x_0)</m> for only finitely many values of <m>n</m>.
+ Then there exists <m>N_0\in \N</m> such that for all <m>n \geq N_0</m> we have <m>f(a_n)\neq f(x_0)</m>.
+ Hence for all <m>n \geq N_0</m> we have
+<me>
+\frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{a_n-x_0} = \frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{f(a_n)-f(x_0)}\cdot \frac{f(a_n)-f(x_0)}{a_n-x_0} . 
+</me>
+ Since differentiability implies continuity (<xref ref="prop-diff-cts"/>), we have 
+<me>
+\lim_{n \to \infty} f(a_n) = f(x_0).
+</me>
+ Thus
+<men xml:id="eq-comp-subseq">
+\lim_{n\to \infty} \frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{f(a_n)-f(x_0)} = g'\bigbrac{f(x_0)}.
+</men>
+ We may therefore use the multiplication rule for sequential limits (<xref ref="prop-mult-rule"/>) to deduce that 
+<md>
+<mrow>
+\lim_{n \to \infty} \frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{a_n-x_0} \amp = \lim_{n\to\infty}\brac{ \frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{f(a_n)-f(x_0)}\cdot \frac{f(a_n)-f(x_0)}{a_n-x_0}}
+</mrow>
+<mrow>
+\amp = \lim_{n\to\infty}\frac{g\bigbrac{f(a_n)}-g\bigbrac{f(x_0)}}{f(a_n)-f(x_0)}\lim_{n\to \infty} \frac{f(a_n)-f(x_0)}{a_n-x_0}
+</mrow>
+<mrow>
+\amp = g'\bigbrac{f(x_0)}f'(x_0).
+</mrow>
+</md>
+</p>
+<p>
+ Next, let us suppose that <m>f(a_n)  = f(x_0)</m> for infinitely many values of <m>n</m>.
+ Write <m>k_1 \lt  k_2 \lt  \dots</m> for those indices for which  <m>f(x_{k_n}) = f(x_0)</m>.
+ Write <m>\ell_1 \lt  \ell_2 \lt  \dots</m> for the (possibly finite) remaining indices with <m>f(x_{l_n}) \neq f(x_0)</m>.
+ The sequence
+<men xml:id="eq-g-frac-bd">
+n\mapsto \frac{g\bigbrac{f(x_{\ell_n})}-g\bigbrac{f(x_0)}}{f(x_{\ell_n})-f(x_0)}
+</men>
+is either a finite sequence, or converges as in the proof of <xref ref="eq-comp-subseq"/>.
+ In either case, the sequence is bounded, so there exists <m>M \in \R</m> such that for all <m>\ell_n</m> we have
+<me>
+\abs{\frac{g\bigbrac{f(x_{\ell_n})}-g\bigbrac{f(x_0)}}{f(x_{\ell_n})-f(x_0)}
+} \leq M.
+</me>
+ Combining this with <xref ref="eq-chain-alt"/>, for any <m>n \in \N</m> we have
+<men xml:id="eq-alt-chain-ineq">
+\abs{\frac{g\bigbrac{f( a_n)} - g\bigbrac{f(x_0)}}{ a_n-x_0}} \leq M\abs{\frac{f(x_{n}) - f(x_0)}{x_{n} - x_0}}.
+</men>
+ Since <m>x_{k_n} \to x_0</m> we have 
+<me>
+f'(x_0) = \lim_{n \to \infty} \frac{f(x_{k_n}) - f(x_0)}{x_{k_n} - x_0} = 0.
+</me>
+ So it follows that
+<me>
+\lim_{n \to \infty} \frac{f(x_{n}) - f(x_0)}{x_{n} - x_0} = f'(x_0) = 0.
+</me>
+ Combining this with <xref ref="eq-alt-chain-ineq"/> gives
+<me>
+\lim_{n\to \infty}\abs{\frac{g\bigbrac{f( a_n)} - g\bigbrac{f(x_0)}}{ a_n-x_0}} = 0.
+</me>
+ Hence <xref ref="eq-chain-to-prove"/> also follows in this case.
+ </p>
+ </proof>
+</theorem>
+					</solution>
+				</exercise>
+				<exercise>
+				<title>Quotient rule</title>
+					<statement>State and prove the quotient rule for differentiation.
+					</statement>
+					<solution>
+					<corollary xml:id="cor-quotient">
+<title>Quotient rule</title>
+<statement>
+ Let <m>f,g : (a,b) \to \R</m> both be differentiable at <m>x_0 \in D</m>.
+ Suppose that <m>g(x_0) \neq 0</m>.
+ Then the quotient <m>f/g</m> is defined on <m>(x_0-\delta, x_0+\delta)</m> for some <m>\delta \gt 0</m> and is differentiable at <m>x_0</m>.
+ Moreover the derivative satisfies the identity
+<men xml:id="eq-quotient">
+(f/g)'(x_0) = \frac{f'(x_0)g(x_0)-f(x_0)g'(x_0)}{g(x_0)^2}.
+</men>
+</statement>
+<proof>
+ Since differentiability implies continuity (<xref ref="prop-diff-cts"/>), the function <m>g</m> is continuous at <m>x_0</m>.
+ Since <m>g(x_0) \neq 0</m>, and non-zero points of continuity yield a non-zero neighbourhood (<xref ref="cor-non-zero-cts"/>), there exists <m>\delta \gt0</m>  such that <m>g(x) \neq 0</m> for all <m>x \in  (a,b)\cap (x_0-\delta, x_0+\delta)</m>. Decreasing <m>\delta</m> if necessary, we may assume that <m> (x_0-\delta, x_0+\delta)\subset (a,b)</m>.
+ Hence the quotient <m>x \mapsto f(x)/g(x)</m> is defined on <m>(x_0-\delta, x_0+\delta)</m>.
+ Composing the reciprocal function <m>y \mapsto 1/y</m> with <m>g</m>, the chain rule (<xref ref="thm-chain-rule"/>) and <xref ref="eg-recip-diff"/> together give that the function 
+<me>
+x\mapsto \recip{g(x)}
+</me>
+is differentiable at <m>x_0</m>. 
+ Moreover, the derivative satisfies
+<me>
+\brac{\recip{g(x_0)}}' = -\frac{g'(x_0)}{g(x_0)^2}.
+</me>
+ Hence by the product rule (<xref ref="prop-alg-diff"/>) the quotient <m>f/g = f \cdot\brac{1/g}</m> is differentiable at <m>x_0</m> with derivative
+<me>
+\frac{f'(x_0)}{g(x_0)} - \frac{f(x_0)g'(x_0)}{g(x_0)^2}.
+</me> 
+ This completes the proof of the quotient rule.
+</proof>
+</corollary>
+					</solution>
+				</exercise>
+			<exercise>
+				<title>The inverse function theorem</title>
+					<statement>State and prove how differentiable functions with continuous inverse have a differentiable inverse.</statement>
+					<solution>
+					<theorem xml:id="thm-inverse-fn-1">
+<title>Inverse function theorem</title>
+<statement>
+ Let <m>f: (a,b) \to (c,d)</m> be a bijective function and let  <m>x_0 \in (a,b)</m>. Suppose that <m>f^{-1}</m> is continuous at <m>y_0:=f(x_0)</m> and that <m>f</m> is differentiable at <m>x_0</m> with 
+<me>
+f'(x_0) \neq 0.
+</me>
+ Then <m>f^{-1}</m> is differentiable at <m>y_0</m> with derivative
+<men xml:id="eq-inv-formula">
+\brac{f^{-1}}'(y_0) = \recip{f'(x_0)}.
+</men>
+</statement>
+<proof>
+We are required to prove that if <m>(y_n)_{n=1}^\infty</m> is a sequence in <m>(c,d)\setminus\set{y_0}</m> with <m>y_n \to y_0</m>, then
+<me>
+\frac{f^{-1}(y_n) - f^{-1}(y_0)}{y_n-y_0} \to \recip{f'(x_0)}.
+</me>
+ Since <m>f</m> is bijective, for each <m>y_n\in (c,d)\setminus\set{y_0}</m> there exists <m>x_n \in (a,b)\setminus\set{x_0}</m> such that <m>f(x_n) = y_n</m>.
+ Thus <m>(x_n)_{n=1}^\infty</m> is a sequence in <m>(a,b)\setminus\set{x_0}</m>.
+ Since <m>f^{-1}</m> is continuous at <m>y_0</m> we have
+<me>
+x_n = f^{-1}(y_n) \to f^{-1}(y_0) = x_0.
+</me>
+ Since <m>f</m> is differentiable at <m>x_0</m>, it follows that
+<me>
+\frac{f(x_n)-f(x_0)}{x_n-x_0} \to f'(x_0).
+</me>
+ Since <m>f'(x_0) \neq 0</m>, it follows from the reciprocal rule for limits (<xref ref="prop-recip-rule"/>) that 
+<me>
+\frac{f^{-1}(y_n)-f^{-1}(y_0)}{y_n-y_0} = \frac{x_n-x_0}{f(x_n)-f(x_0)}\to \recip{f'(x_0)}.
+</me>
+</proof>
+</theorem>
+					</solution>
+			</exercise>
+			<exercise>
+				<title>Differentiability of power series</title>
+					<statement>State how power series are differentiable within their radius of convergence (the proof is non-examinable).</statement>
+					<solution>
+					<theorem xml:id="cor-power-diff">
+					<title>Power series are differentiable within their radius of convergence</title>
+					<statement>
+ Let <m>(a_n)_{n=0}^\infty</m> be a sequence of real numbers.
+ Let <m>R \in [0, \infty]</m> denote the radius of convergence (see <xref ref="thm-radius"/>) of the corresponding power series:
+<men xml:id="eq-power-fn-2">
+f(x) := \sum_{n =0}^\infty a_n x^n.
+</men>
+ Then the function <m>f : (-R, R) \to \R</m> given by <xref ref="eq-power-fn-2"/> is differentiable.
+ Moreover, for any <m>x_0 \in (-R, R)</m> we have the formula
+<men xml:id="eq-nth-power-deriv">
+f'(x_0) = \sum_{n = 1}^\infty na_n x_0^{n-1}
+</men>
+where the right-hand side of <xref ref="eq-nth-power-deriv"/> is absolutely convergent.
+</statement>
+<proof>
+<title>Proof (non-examinable)</title>
+<p>
+Let us first show that the right-hand side of <xref ref="eq-nth-power-deriv"/> is absolutely convergent. 
+ Let <m>r</m> be a real number satisfying 
+ <m>|x_0| \lt  r \lt  R</m>.
+ Such a number exists since <m>|x_0| \lt  R</m>, for instance we could set
+ <me>
+ r:=\frac{|x_0|+R}{2}
+ </me>.
+ We claim that
+<men xml:id="eq-squared-series">
+\sum_{n=2}^\infty n^2 |a_n| r^{n-2} \lt \infty.
+</men>
+ To see this, let <m>r_1</m> be a real satisfying <m>r \lt  r_1 \lt  R</m>.
+ Then 
+<me>
+\sum_{n=2}^\infty n^2 |a_n| r^{n-2} \leq r^{-2}\sum_{n=2}^\infty n^2 (r/r_1)^n |a_n| r_1^n.
+</me> 
+ Since exponentials beat polynomials (<xref ref="prop-exp-poly"/>), we have that <m>n^2 (r/r_1)^n \to 0</m>, in particular the sequence <m>n^2 (r/r_1)^n</m> is bounded. Hence there exists <m>C</m> such that
+ <me>
+ \sum_{n=2}^\infty n^2 |a_n| r^{n-2} \leq r^{-2}\sum_{n=2}^\infty C|a_n| r_1^n \leq r^{-2}C\sum_{n=0}^\infty |a_n|r_1^n.
+</me>
+ The latter is finite, since the series <xref ref="eq-power-fn-2"/> converges absolutely for <m>|x|\lt R</m>, in particular for <m>x=r_1</m>. This establishes the claim <xref ref="eq-squared-series"/>. It follows, by the comparison test (<xref ref="prop-oh-test"/>), that we obtain absolute convergence of
+<me>
+\sum_{n=1}^\infty n a_n x^{n-1}.
+</me>
+</p>
+<p>
+With the above facts on absolute convergence established, we are able to prove <xref ref="eq-nth-power-deriv"/>. By linearity of series (<xref ref="prop-lin-series"/>), for <m>x \in [-r,r]</m> with <m>x\neq x_0</m> we have
+<me>
+\frac{f(x) - f(x_0)}{x-x_0} - \sum_{n=1}^\infty na_n x_0^{n-1} 
+ = \recip{x-x_0}\sum_{n=2}^\infty a_n \sqbrac{x^n-x_0^n-(x-x_0)nx_0^{n-1}}
+ </me>.
+ For <m>n\in \N</m> we have the identity
+ <me>
+ x^n-x_0^n = (x-x_0)\brac{x^{n-1} + x^{n-2}x_0 + \dots + xx_0^{n-2} + x_0^{n-1}}
+ </me>.
+ Hence for <m>x,x_0 \in [-r,r]</m> and <m>k \in \N\cup\set{0}</m> we obtain the bound
+ <me>
+ |x^k-x_0^k| \leq |x-x_0|kr^{k-1}
+ </me>.
+ Hence for <m>x,x_0 \in [-r,r]</m> and <m>n\in \N</m> we have
+ <md>
+ <mrow>
+ \abs{x^n-x_0^n-(x-x_0)nx_0^{n-1}} \amp \leq \sum_{k=0}^{n-1} \abs{x^{k}x_0^{n-1-k} - x_0^{n-1}} 
+ </mrow>
+ <mrow>
+ \amp = \sum_{k=0}^{n-1} \abs{x^k-x_0^k}|x_0|^{n-1-k} 
+ </mrow>
+ <mrow>
+ \amp \leq  \sum_{k=0}^{n-1} k|x-x_0|r^{n-2} \leq n^2 |x-x_0| r^{n-2}
+ </mrow>
+ </md>.
+ Therefore
+ <me>
+\abs{\frac{f(x) - f(x_0)}{x-x_0} - \sum_{n=1}^\infty na_n x_0^{n-1}}
+ \leq \abs{x-x_0}\sum_{n=2}^\infty n^2|a_n|r^{n-2}
+ </me>.
+ On taking
+ <me>
+ \delta(x_0, \eps) := \min\set{\frac{\eps}{\sum_{n=2}^\infty n^2|a_n|r^{n-2}}, r-|x_0|} \gt 0
+ </me>
+ and <m>y_0 := \sum_{n=1}^\infty n a_n x_0^{n-1}</m>, we deduce that
+ <md>
+ <mrow>
+ (\forall \eps \gt 0)\amp(\exists \delta \gt 0)(\forall x \in (-R, R)\setminus\set{x_0})
+ </mrow>
+ <mrow>
+\amp \sqbrac{ |x-x_0| \leq \delta \implies \abs{\tfrac{f(x)-f(x_0)}{x-x_0} - y_0}\leq \eps}
+ </mrow>
+ </md>.
+ So we have established the definition of differentiability (<xref ref="def-differentiable"/>) via the epsilon-delta characterisation (<xref ref="cor-eps-delta-cts"/>) of a finite limit at a finite point.
+ </p>
+</proof>
+</theorem>
+					</solution>
+			</exercise>
+			</subsection>
+			<subsection>
+			<title>Workshop questions</title>
+			<exercise>
+<title>
+True/false workshop quiz
+</title>
+<introduction>
+In your workshop, you will vote on whether you think each of the following statements is true (thumbs up) or false (thumbs down). For each question, your workshop tutor will ask one of you to briefly justify your vote. This justification can involve giving a counterexample (if false) or outlining which definition/theorem the statement  follows from (if true).
+</introduction>
+	<task>
+	<statement> Let <m>f: \R\to\R</m> and suppose that <m>f(x)\to y_0</m> as <m>x\to x_0</m> through <m>\R</m>. Then it is also the case that  <m>f(x)\to y_0</m> as <m>x\to x_0</m> through <m>(0,\infty)</m>.
+	</statement>
+	</task>
+	<task>
+	<statement> Let <m>f: \R\to\R</m> and suppose that <m>|f(x)|\to |y_0|</m> as <m>x\to x_0</m> through <m>\R</m>. Then it is also the case that  <m>f(x)\to y_0</m> as <m>x\to x_0</m> through <m>\R</m>.
+	</statement>
+	</task>
+	<task>
+	<statement> Let <m>f: \R\to\R</m> and <m>x_0,y_0\in \R</m>. Suppose that <m>f(x)\to y_0</m> as <m>x\to x_0</m> through <m>\R</m>. Then it is also the case that  <m>f(10x)\to y_0</m> as <m>x\to x_0/10</m> through <m>\R</m>.
+	</statement>
+	</task>
+	<task>
+	<statement> All polynomials are uniformly continuous.
+	</statement>
+	</task>
+	<task>
+	<statement> A uniformly continuous function on a closed interval is also continuous.
+	</statement>
+	</task>
+	<task>
+	<statement> By the intermediate value theorem, a continuous function <m> f:[a,b]\to\R</m> attains all of the values between <m>f(a)</m> and <m>f(b)</m>.
+	</statement>
+	</task>
+	<task>
+	<statement> By the intermediate value theorem, an increasing function <m> f:[a,b]\to\R</m> attains all of the values between <m>f(a)</m> and <m>f(b)</m>.
+	</statement>
+	</task>
+	<task>
+	<statement> By the intermediate value theorem, a function <m> f:\R\to\R</m> which is increasing and continuous has <m>f(\R)=\R</m>, so that it attains all real values.	
+	</statement>
+	</task>
+	<task>
+	<statement> By the extreme value theorem, a continuous function <m> f:\R\to\R</m> attains its infimum.
+	</statement>
+	</task>
+	<task>
+	<statement> Suppose that for <m> f:\R\to\R</m> and <m>x_0,y_0\in \R</m> we have
+	<me>
+	\frac{f(x_0+1/n)-f(x_0)}{(x_0+1/n)-x_0} \to y_0 \quad\text{as}\quad n \to \infty.
+	</me>
+	Then <m>f</m> is differentiable at <m>x_0</m> with derivative <m>y_0</m>.
+	</statement>
+	</task>
+	<task>
+	<statement> If <m> f:[a,b]\to\R</m> is differentiable, then <m>f</m> attains all of the values between <m>f(a)</m> and <m>f(b)</m>.
+	</statement>
+	</task>
+	<task>
+	<statement> The set of differentiable functions <m>f:(a,b)\to \R</m> form a vector space.
+	</statement>
+	</task>
+	<task>
+	<statement> The composition of two differentiable functions is also differentiable.	
+	</statement>
+	</task>
+	<task>
+	<statement> If a bijective function <m>f:(a,b)\to(c,d)</m> has continuous inverse and <m>f'(x_0)\neq 0</m> then <m>1/f</m> is differentiable at <m>x_0</m>.	
+	</statement>
+	</task>
+	<task>
+	<statement> If a bijective function <m>f:(a,b)\to(c,d)</m> has continuous inverse and <m>f'(x_0)\neq 0</m> then <m>f^{-1}</m> is differentiable at <m>x_0</m>.	
+	</statement>
+	</task>
+	<task>
+	<statement> If a power series in <m>x</m> converges absolutely at <m>x</m>, then it is differentiable at <m>x</m>.
+	</statement>
+	</task>
+	</exercise>
+	<exercise>
+<title>Exam-style self-test question for workshop</title>
+<introduction>
+		Let <m>f :\R \to \R</m>.
+</introduction>
+		<task>
+			<statement>
+				<p>
+				Define what it means for the function <m>f</m> to be <em>uniformly continuous</em>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					This is a version of <xref ref="def-unif-cts"/>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				Without using the fact that uniform continuity implies continuity, prove that if <m>f</m> is uniformly continuous, then the sequence <m>f(1/\sqrt{n})</m> satisfies the definition of converging to <m>f(0)</m> as <m>n \to \infty</m>.
+			</statement>
+			<solution>
+				<p>
+					This is a special case of <xref ref="prop-unif-implies-cts"/>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				Give an example of a continuous function <m>f: \R \to \R</m> which is not uniformly continuous. You do not need to prove continuity, but you should prove that your example is not uniformly continuous.
+			</statement>
+			<solution>
+				<p>
+					This is a version of <xref ref="eg-square-not-unif-cts"/>.
+				</p>
+			</solution>
+		</task>
+<!--
+		<task>
+			<statement>
+				<p>
+				Give an example of a function <m>f:(0,1)\to \R</m> which is continuous but not uniformly continuous. You do not need to prove that your function is continuous and you do not need to prove that your function is not uniformly continuous.
+				</p>
+			</statement>
+			<solution>
+				<p>
+				</p>
+			</solution>
+		</task>
+-->
+</exercise>
+<exercise>
+<title>Exam-style self-test question for workshop</title>
+<introduction>
+		Let <m>f :\R \to \R</m>.
+</introduction>
+		<task>
+			<statement>
+				<p>
+				Define what it means for the function <m>f</m> to be <em>differentiable</em> at <m>x_0\in \R</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					This is a version of <xref ref="def-differentiable"/>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				Suppose that <m>f</m> is differentiable at <m>x_0</m> with <m>f'(x_0) = 0</m>. Justify why, for any <m>\eps \gt 0</m> there exists <m>\delta(\eps) \gt 0</m> such that if <m>0\lt |x-x_0| \leq \delta(\eps)</m> then
+				<me>
+				|f(x) - f(x_0)| \leq \eps|x-x_0|. 
+				</me>
+			</statement>
+			<solution>
+					This follows from combining <xref ref="def-differentiable"/> with <xref ref="cor-eps-delta-cts"/>, then re-arranging and using the triangle inequality, as in the proof of <xref ref="prop-diff-cts"/>.
+			</solution>
+		</task>
+		<task>
+			<statement>
+				Using the above, prove that if <m>f</m> is  differentiable at <m>x_0</m> then it is continuous at <m>x_0</m>.
+			</statement>
+			<solution>
+					This is the proof of <xref ref="prop-diff-cts"/>.
+			</solution>
+		</task>
+	</exercise>
+	<exercise>
+<title>Exam-style self-test question for workshop</title>
+<introduction>
+		Let <m>f : [a,b] \to \R</m> be an increasing and continuous function with <m>f(a) \leq 0 \leq f(b)</m>. The purpose of this question is to prove a special case of the intermediate value theorem for <m>f</m>.
+</introduction>
+		<task>
+			<statement>
+				State the conclusion of the intermediate value theorem for <m>f</m>.
+			</statement>
+			<solution>
+					This is <xref ref="thm-IVT"/>.
+			</solution>
+		</task>
+		<task>
+			<statement>
+				Define the set 
+				<men xml:id="eq-X-0">
+				X_0:= \set{x\in [a,b] : f(x)\leq 0}
+				</men>.
+				Justify why <m>\sup X_0</m> exists.
+			</statement>
+			<solution>
+					This is an instance of <xref ref="completeness-principle"/>.
+			</solution>
+		</task>
+		<task>
+			<statement>
+				Write 
+				<men xml:id="eq-x-0">
+				x_0 := \sup \set{x\in [a,b] : f(x)\leq 0}
+				</men>.
+				Justify why the assumption <m>f(x_0) \gt 0</m> implies that there exists <m>x_1 \lt x_0</m> with <m>f(x_1)\gt 0</m>, and why this contradicts the definition of <m>x_0</m>.
+			</statement>
+			<solution>
+					This can be adapted from the proof of <xref ref="thm-IVT"/>.
+			</solution>
+		</task>
+		<task>
+			<statement>
+				Defining <m>x_0</m> as in <xref ref="eq-x-0"/>, justify why the assumption <m>f(x_0) \lt 0</m> implies that there exists <m>x_2 \gt x_0</m> with <m>f(x_2)\leq 0</m>, and why this contradicts the definition of <m>x_0</m>. Hence explain why you may conclude that <m>f(x_0) = 0</m>.
+			</statement>
+			<solution>
+					This can be adapted from the proof of <xref ref="thm-IVT"/>.
+			</solution>
+		</task>
+<!--
+		<task>
+			<statement>
+				Give an example of an increasing function <m>f : [a,b] \to \R</m> which does not attain all of the values between <m>f(a)</m> and <m>f(b)</m>.
+			</statement>
+			<solution>
+					For example <m>f : [-1,1]\to \R</m> given by <m>f(x)= -1</m> when <m>x\lt 0</m>, <m>f(0)=0</m> and <m>f(x)= 1</m> when <m>x\gt 0</m>.
+			</solution>
+		</task>
+-->
+	</exercise>
+			</subsection>
+		</section>
